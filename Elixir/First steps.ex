@@ -184,7 +184,7 @@ import Integer
 m = %{ a: 2, b: 3 }
 IO.puts inspect Map.fetch(m, :b)
 
-a = with {:ok, number} <- Map.fetch(m, :c),
+ with {:ok, number} <- Map.fetch(m, :c),
         true <- is_even(number) do
         IO.puts "#{number} divided by 2 is #{div(number, 2)}"
         :even
@@ -197,7 +197,17 @@ a = with {:ok, number} <- Map.fetch(m, :c),
 end
 
 
+whoAreYou = 
+%{
+    "batman" => fn(yourName) -> "#{yourName} is the batman!" end,
+    thanos: fn(yourName) -> "#{yourName} is Thanos" end
+}
 
+youAreThanos = whoAreYou[:thanos]
+youAreBatman = whoAreYou["batman"]
+
+IO.puts youAreThanos.("Thanos")
+IO.puts youAreBatman.("Batman")
 
 
 
