@@ -208,12 +208,4 @@ youAreBatman = whoAreYou["batman"]
 
 IO.puts youAreThanos.("Thanos")
 IO.puts youAreBatman.("Batman")
-
-
-
-
-
-
-
-
     
