@@ -1,3 +1,38 @@
+
+sum = fn(a,b) -> a + b end
+
+IO.puts sum.(5,7)
+
+sub = &(&1 - &2)
+IO.puts sub.(5,4)
+
+get_message = fn
+    {:ok, result} -> IO.puts "Ok handling result: " <> result
+    #{:ok, _} -> IO.puts "Never run because before clausule" #This would be never run as previous will be matched beforehand
+    {:error, data} -> IO.puts "handling errors: " <> data
+end   
+    
+get_message.({:ok, "haha"})
+
+
+defmodule Calculator do
+    def sum(left, right) do
+        left + right
+    end
+    
+    def sub(left, right), do: left - right
+    
+    def div(left, right), do: left / right
+    
+    def mult(left, right), do: left * right
+end
+
+IO.puts Calculator.sum(3,3)
+IO.puts Calculator.sub(10, 3)
+IO.puts Calculator.div(10,2)
+IO.puts Calculator.mult(8,8)
+
+
 numberList = [1,3,5,7,2,4,6,8]
 
 defmodule Length do
