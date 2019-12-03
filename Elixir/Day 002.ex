@@ -42,7 +42,7 @@ defmodule Greeter3 do
         "Hello, #{person_name} and pet #{pet_name}. You are: " <> inspect person
     end
     def hello(%{name: person_name, car: car} = person) do 
-        "Hello, #{person_name}. You have a: #{car} and you have are " <> inspect person
+        "Hello, #{person_name}. You have a: #{car} and you are " <> inspect person
     end
     def hello(person = %{name: person_name}) do 
         "Hello, #{person_name}. You are: " <> inspect person
