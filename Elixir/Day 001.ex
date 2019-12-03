@@ -70,10 +70,10 @@ IO.puts "each method"
 Enum.each(list3, fn(x) -> IO.puts x end)
 IO.puts "end each method"
 IO.puts ""
-IO.puts "each method"
+IO.puts "map method"
 IO.inspect(Enum.map(list3, fn(x) -> inspect(x) end))
 
-IO.puts "end each method"
+IO.puts "end map method"
 IO.puts ""
 
 
