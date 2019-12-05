@@ -65,9 +65,7 @@ defmodule Hi2 do
     use Hello2, greeting: "Olá"
 end
 
-IO.puts Hi2.hello("Batman")
-
-
+IO.puts Hi2.hello("Batman")d
 
 # iex -S mix #compila o codigo??
 # mix compile #compila o projeto
