@@ -37,7 +37,7 @@ defmodule Solution do
  end
 
   def process("kind.deleted", data) do
-     IO.puts "kind.updated with #{inspect(data)}"
+     IO.puts "kind.deleted with #{inspect(data)}"
  end
 
  def process("kind2.added", data) do
