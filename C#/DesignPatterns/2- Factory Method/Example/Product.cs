@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DesignPatterns._2__Factory_Method
+namespace DesignPatterns._2__Factory_Method.Example
 {
-    class Product
+    public class Product
     {
     }
 }
