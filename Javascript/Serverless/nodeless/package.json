@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "predeploy":"rm -rf node_modules/sharp && npm install --platform linux --arch=x64",
+    "predeploy": "rm -rf node_modules/sharp && npm install --platform=linux --arch=x64 --target=10.0.0 sharp",
     "deploy": "serverless deploy -v",
     "postdeploy": "rm -rf node_modules/sharp && npm install sharp"
   },

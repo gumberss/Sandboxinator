@@ -10,23 +10,23 @@ provider:
       Action:
           - s3:GetObject
           - s3:PutObject
-        Resource:
+      Resource:
           - "arn:aws:s3:::*"
 
 functions:
   optimize:
     handler: optimize.handle
     environment: 
-      buket: serverless
+      buket: ttv-test-serverless
     events:
       - s3:
-          bucket: serverless
+          bucket: ttv-test-serverless
           event: s3:ObjectCreated:*
           rules: 
             - prefix: uploads/
             - suffix: .jpg
       - s3:
-          bicket: serverless
+          bucket: ttv-test-serverless
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads/
