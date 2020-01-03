@@ -2,6 +2,20 @@ import React, { useState, useEffect } from 'react'
 
 function App() {
   const [repositories, setRepositories] = useState([])
+  const [location, setLocation] = useState({})
+
+  useEffect(() => {
+    const watchId = navigator.geolocation.watchPosition(handlePositionReceived)
+
+    return () => navigator.geolocation.clearWatch(watchId)
+  }, [])
+
+  function handlePositionReceived({ coords }){
+
+    const { latitude, longitude } = coords
+
+    setLocation({ latitude, longitude })
+  }
 
   /* I (useEffect) just want to execute when the variables inside the array changes */
   /* If the array is empty, useEffect will execute once */
@@ -27,6 +41,13 @@ function App() {
 
   return (
     <>
+    <div>
+      Olá usuário.<br />
+      Você está em: <br />
+      Latitude: { location.latitude }<br />
+      Longitude: { location.longitude }
+      
+    </div>
       <ul>
         {repositories.map(repo => (
           <li key={repo.id}>
