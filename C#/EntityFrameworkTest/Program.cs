@@ -9,9 +9,11 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new PlayingWithTasks();
+            var playing = new AsyncTask();
 
             playing.Process();
+
+            Console.ReadKey();
         }
     }
 }
