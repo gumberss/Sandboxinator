@@ -1,4 +1,5 @@
 ﻿using Learning;
+using Learning.Threads;
 using Learning.Threads.BusinessRules;
 using System;
 
@@ -8,12 +9,9 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            using (var ctx = new MyContext())
-            {
-                var movieRules = new MovieRules();
+            var playing = new PlayingWithTasks();
 
-                movieRules.Medium();
-            }
+            playing.Process();
         }
     }
 }
