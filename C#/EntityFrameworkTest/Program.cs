@@ -9,7 +9,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new AsyncTask();
+            var playing = new DictionaryTest();
 
             playing.Process();
 
