@@ -12,5 +12,23 @@ namespace certificacao_csharp_roteiro.antes
         {
 
         }
+
+        public class Batman
+        {
+
+            private IList<int> MyInt { get; set; }
+
+            public int this[int index]
+            {
+                get
+                {
+                    return MyInt[index];
+                }
+                set
+                {
+                    MyInt[index] = value;
+                }
+            }
+        }
     }
 }

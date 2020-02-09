@@ -11,6 +11,16 @@ namespace certificacao_csharp_roteiro
         static IList<MenuItem> menuItems;
         static void Main(string[] args)
         {
+
+
+            var a = 100.10;
+            var b = 50.20;
+
+            var c = a + b;
+
+            Console.WriteLine(c == 150.70);
+            Console.ReadLine();
+
             IAulaItem itemSelecionado;
             menuItems = GetMenuItems();
 
