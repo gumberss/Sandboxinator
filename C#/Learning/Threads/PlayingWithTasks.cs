@@ -9,6 +9,12 @@ namespace Learning.Threads
 
         public void Process()
         {
+         
+            Console.ReadKey();
+        }
+
+        public void Threads()
+        {
             Thread.CurrentThread.Name = "Main Thread";
             PresentThread(Thread.CurrentThread);
 
@@ -30,11 +36,13 @@ namespace Learning.Threads
             t3.Start("Parameter");
             t3.Join();
 
+            bool stopTicTac = false;
+
             Thread t4 = new Thread(() =>
             {
                 PresentThread(Thread.CurrentThread);
 
-                while (true)
+                while (!stopTicTac)
                 {
                     Console.WriteLine("Tic");
                     Thread.Sleep(1000);
@@ -47,7 +55,13 @@ namespace Learning.Threads
 
             Console.WriteLine("press any key to stop the tic tac :D");
             Console.ReadKey();
+            stopTicTac = true;
             t4.Join();
+
+            for (int i = 0; i < 50; i++)
+            {
+                ThreadPool.QueueUserWorkItem(state => ExecutionFakeParameter(state), i);
+            }
         }
 
         private void PresentThread(Thread t)
