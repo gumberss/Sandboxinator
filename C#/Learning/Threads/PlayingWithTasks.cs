@@ -7,6 +7,37 @@ namespace Learning.Threads
     public class PlayingWithTasks
     {
 
+        public void Process()
+        {
+            Thread t1 = new Thread(ExecutionFake);
+            Thread t2 = new Thread(() => ExecutionFake());
+        
+            t1.Start();
+            t2.Start();
+
+            ParameterizedThreadStart ps = new ParameterizedThreadStart(p => ExecutionFakeParameter(p));
+
+            Thread t3 = new Thread(ps);
+            t3.Start("Parameter");
+        }
+
+        private void ExecutionFake()
+        {
+            Console.WriteLine("Executing....");
+            Thread.Sleep(1000);
+            Console.WriteLine("Ok, that's it");
+
+        }
+
+        private void ExecutionFakeParameter(object o)
+        {
+            Console.WriteLine($"Executing {o}....");
+
+            Thread.Sleep(1000);
+
+            Console.WriteLine($"Ok, that's it {o}");
+
+        }
 
         public void ContinueWith()
         {
