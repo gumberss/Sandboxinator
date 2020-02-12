@@ -3,6 +3,7 @@ using Learning.Events;
 using Learning.Serialization;
 using Learning.Threads;
 using Learning.Threads.BusinessRules;
+using Learning.TypeAndCollections;
 using System;
 
 namespace EntityFrameworkTest
@@ -11,10 +12,10 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyXmlSerializer();
+            var playing = new MyHashSet();
 
-            Console.WriteLine(playing.Serialize(new Street()));
-
+            playing.Process();
+            
             Console.ReadKey();
         }
     }
