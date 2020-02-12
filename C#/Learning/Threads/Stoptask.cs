@@ -10,11 +10,25 @@ namespace Learning.Threads
         {
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
-            var task1 = Task.Run(() => Clock(cancellationTokenSource.Token), cancellationTokenSource.Token);
+                        Task.Run(() => Clock(cancellationTokenSource.Token), cancellationTokenSource.Token);
+
+            var countTask = Task.Run(() => Count(cancellationTokenSource.Token), cancellationTokenSource.Token);
 
             Console.ReadKey();
 
+
             cancellationTokenSource.Cancel();
+
+            try
+            {
+                countTask.Wait();
+
+                Console.WriteLine("The count task was finished with success");
+            }
+            catch(AggregateException ex)
+            {
+                Console.WriteLine("The count task was cancelled");
+            }
             Console.WriteLine("Stoped");
         }
 
@@ -29,6 +43,20 @@ namespace Learning.Threads
                 Thread.Sleep(500);
             }
             
+        }
+
+        public void Count(CancellationToken token)
+        {
+            int count = 5;
+
+            while(count >= 0 && !token.IsCancellationRequested)
+            {
+                Console.WriteLine(count);
+                count--;
+                Thread.Sleep(500);
+            }
+
+            token.ThrowIfCancellationRequested();
         }
     }
 }
