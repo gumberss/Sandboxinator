@@ -1,4 +1,6 @@
 ﻿using Learning;
+using Learning.Events;
+using Learning.Serialization;
 using Learning.Threads;
 using Learning.Threads.BusinessRules;
 using System;
@@ -9,9 +11,9 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new ThreadComparer();
+            var playing = new MyXmlSerializer();
 
-            playing.Process();
+            Console.WriteLine(playing.Serialize(new Street()));
 
             Console.ReadKey();
         }
