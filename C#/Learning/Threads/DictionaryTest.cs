@@ -32,7 +32,6 @@ namespace Learning.Threads
             }
         }
 
-
         public void ChangeDictionary(ConcurrentDictionary<int, int> dictionary)
         {
             for (int i = 0; i < 50; i++)

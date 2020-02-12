@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+
+namespace Learning.Threads
+{
+    public class Block
+    {
+        private object _lock = new object();
+
+        public void Process()
+        {
+            lock (_lock)
+            {
+                //object locked
+            }
+
+            Monitor.Enter(_lock);
+            //object locked
+            Monitor.Exit(_lock);
+
+            if (Monitor.TryEnter(_lock))
+            {
+                //object locked
+            }
+            else
+            {
+                //the object couldn't be locked
+            }
+        }
+
+    }
+}
