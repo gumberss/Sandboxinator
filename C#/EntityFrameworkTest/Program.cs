@@ -9,7 +9,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new StopTask();
+            var playing = new ThreadComparer();
 
             playing.Process();
 
