@@ -1,5 +1,7 @@
 ﻿using Learning;
+using Learning.AES;
 using Learning.Events;
+using Learning.RegularExpressions;
 using Learning.Serialization;
 using Learning.Threads;
 using Learning.Threads.BusinessRules;
@@ -12,7 +14,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyHashSet();
+            var playing = new MyAes();
 
             playing.Process();
             

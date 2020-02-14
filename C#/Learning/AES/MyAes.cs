@@ -20,14 +20,13 @@ namespace Learning.AES
 
                 ICryptoTransform cryptoTransform = aes.CreateEncryptor();
 
-                using (MemoryStream ms = new MemoryStream())
-                using (CryptoStream cryptoStream = new CryptoStream(ms, cryptoTransform, CryptoStreamMode.Write))
-                using (StreamWriter sw = new StreamWriter(cryptoStream))
-                {
-                    sw.Write(secret);
+                using MemoryStream ms = new MemoryStream();
+                using CryptoStream cryptoStream = new CryptoStream(ms, cryptoTransform, CryptoStreamMode.Write);
+                using StreamWriter sw = new StreamWriter(cryptoStream);
 
-                    encrypted = ms.ToArray();
-                }
+                sw.Write(secret);
+
+                encrypted = ms.ToArray();
             }
 
             ShowBytes("Key: ", key);
