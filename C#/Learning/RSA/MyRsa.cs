@@ -6,6 +6,24 @@ namespace Learning.RSA
     {
         public void Process()
         {
+            PersonWithCertificate bob = new PersonWithCertificate("Bob");
+
+            PersonWithCertificate marie = new PersonWithCertificate("Marie");
+
+            String marieMessage = "My message that I'm sending to my big friend bob";
+
+            var encryptedMessageBytes = marie.GetSignedMessage(marieMessage);
+
+
+            var receivedMessage = bob.Decrypt(encryptedMessageBytes.Signature); 
+
+            Console.WriteLine($"Message sent by Marie: {marieMessage}");
+
+            Console.WriteLine($"Message received by Bob: {receivedMessage}");
+        }
+
+        public void ProcessPersonWithoutCertificate()
+        {
             Person bob = new Person("Bob");
 
             Person marie = new Person("Marie");

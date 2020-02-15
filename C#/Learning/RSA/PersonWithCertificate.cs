@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Configuration;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Learning.RSA
 {
-    public class Person
+    public class PersonWithCertificate
     {
         public String Name { get; set; }
 
@@ -14,7 +14,7 @@ namespace Learning.RSA
 
         public String PublicKey { get; }
 
-        public Person(string name)
+        public PersonWithCertificate(string name)
         {
             Name = name;
 
@@ -70,5 +70,63 @@ namespace Learning.RSA
             return originalMessage;
 
         }
+
+        private X509Certificate2 GetCertificate()
+        {
+            var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+
+            store.Open(OpenFlags.ReadOnly);
+
+            var certificate = store.Certificates[0];
+
+            return certificate;
+        }
+
+        public Message GetSignedMessage(String message)
+        {
+            var certificate = GetCertificate();
+
+            byte[] signature = GetSignature(message, certificate);
+
+            return new Message(message, signature);
+        }
+
+        private byte[] GetSignature(string message, X509Certificate2 certificate)
+        {
+            UTF8Encoding encoding = new UTF8Encoding();
+
+            var messageBytes = encoding.GetBytes(message);
+
+            var hash = GetHash(messageBytes);
+
+            var encryptor = certificate.GetRSAPrivateKey();
+
+            var signature = encryptor.SignHash(hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pss);
+
+            return signature;
+
+        }
+
+        private byte[] GetHash(byte[] messageBytes)
+        {
+            HashAlgorithm hasher = new SHA1Managed();
+
+            var hash = hasher.ComputeHash(messageBytes);
+
+            return hash;
+        }
+    }
+
+    public class Message
+    {
+        public Message(string text, byte[] signature )
+        {
+            Signature = signature;
+            Text = text;
+        }
+
+        public String Text { get; set; }
+
+        public byte[] Signature { get; set; }
     }
 }
