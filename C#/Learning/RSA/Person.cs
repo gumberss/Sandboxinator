@@ -21,9 +21,9 @@ namespace Learning.RSA
             CspParameters cspParameters = new CspParameters();
             cspParameters.KeyContainerName = "MyContainer";
 
-            var mayResetKeys = false;
+            var shouldResetKeys = false;
 
-            if (mayResetKeys)
+            if (shouldResetKeys)
             {
                 var rsaClear = new RSACryptoServiceProvider(cspParameters);
                 rsaClear.PersistKeyInCsp = false;
