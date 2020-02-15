@@ -9,6 +9,7 @@ namespace Learning.RSA
         public String Name { get; set; }
 
         private readonly String _privateKey;
+        private RSACryptoServiceProvider _cryptoService;
 
         public String PublicKey { get; }
 
@@ -16,11 +17,14 @@ namespace Learning.RSA
         {
             Name = name;
 
-            RSACryptoServiceProvider cryptoService = new RSACryptoServiceProvider();
+            CspParameters cspParameters = new CspParameters();
+            cspParameters.KeyContainerName = "MyContainer";
 
-            _privateKey = cryptoService.ToXmlString(includePrivateParameters: true);
+            _cryptoService = new RSACryptoServiceProvider(cspParameters);
 
-            PublicKey = cryptoService.ToXmlString(includePrivateParameters: false);
+            _privateKey = _cryptoService.ToXmlString(includePrivateParameters: true);
+
+            PublicKey = _cryptoService.ToXmlString(includePrivateParameters: false);
 
             Console.WriteLine(Name);
             Console.WriteLine($"Private key: {_privateKey}");
@@ -36,22 +40,18 @@ namespace Learning.RSA
 
             byte[] messageBytes = encoding.GetBytes(message);
 
-            RSACryptoServiceProvider encryptor = new RSACryptoServiceProvider();
+            _cryptoService.FromXmlString(receiverPublicKey);
 
-            encryptor.FromXmlString(receiverPublicKey);
-
-            var encrypedBytes = encryptor.Encrypt(messageBytes, fOAEP: false);
+            var encrypedBytes = _cryptoService.Encrypt(messageBytes, fOAEP: false);
 
             return encrypedBytes;
         }
 
         public String Decrypt(byte[] encryptedBytes)
         {
-            RSACryptoServiceProvider decryptor = new RSACryptoServiceProvider();
+            _cryptoService.FromXmlString(_privateKey);
 
-            decryptor.FromXmlString(_privateKey);
-
-            var messageBytes = decryptor.Decrypt(encryptedBytes, fOAEP: false);
+            var messageBytes = _cryptoService.Decrypt(encryptedBytes, fOAEP: false);
 
             UTF8Encoding encoding = new UTF8Encoding();
 
