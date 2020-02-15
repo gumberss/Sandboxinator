@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -19,6 +20,15 @@ namespace Learning.RSA
 
             CspParameters cspParameters = new CspParameters();
             cspParameters.KeyContainerName = "MyContainer";
+
+            var mayResetKeys = false;
+
+            if (mayResetKeys)
+            {
+                var rsaClear = new RSACryptoServiceProvider(cspParameters);
+                rsaClear.PersistKeyInCsp = false;
+                rsaClear.Clear();
+            }
 
             _cryptoService = new RSACryptoServiceProvider(cspParameters);
 
