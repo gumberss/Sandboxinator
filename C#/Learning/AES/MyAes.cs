@@ -6,10 +6,7 @@ namespace Learning.AES
 {
     public class MyAes
     {
-        public void Process2()
-        {
-
-        }
+        public void Process2(){ }
 
         public void Process()
         {
