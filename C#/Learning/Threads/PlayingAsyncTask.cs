@@ -16,6 +16,14 @@ namespace Learning.Threads
 
             s.Start();
 
+            Original();
+
+            s.Stop();
+
+            Console.WriteLine($"Time: {s.ElapsedMilliseconds}");
+
+            s.Restart();
+
             RefatorWithTask();
 
             s.Stop();
@@ -40,7 +48,7 @@ namespace Learning.Threads
 
         private async Task UsingTask(int age)
         {
-            Console.WriteLine($"Hello, I'm {age} old");
+            Console.WriteLine($"Hello, I'm {age}");
 
             await Task.Delay(50);
         }
@@ -52,7 +60,7 @@ namespace Learning.Threads
         {
             foreach (var age in Enumerable.Range(1, 200))
             {
-                Console.WriteLine($"Hello, I'm {age} old");
+                Console.WriteLine($"Hello, I'm {age}");
 
                 Thread.Sleep(50);
             }
