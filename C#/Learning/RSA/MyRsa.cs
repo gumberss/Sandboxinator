@@ -15,11 +15,15 @@ namespace Learning.RSA
             var encryptedMessageBytes = marie.GetSignedMessage(marieMessage);
 
 
-            var receivedMessage = bob.Decrypt(encryptedMessageBytes.Signature); 
+            var messageIsValid = bob.ValidateMessage(encryptedMessageBytes);
 
-            Console.WriteLine($"Message sent by Marie: {marieMessage}");
+            Console.WriteLine($"Marie's message is valid? {messageIsValid}");
 
-            Console.WriteLine($"Message received by Bob: {receivedMessage}");
+            //var receivedMessage = bob.Decrypt(encryptedMessageBytes.Signature); 
+
+            //Console.WriteLine($"Message sent by Marie: {marieMessage}");
+
+            //Console.WriteLine($"Message received by Bob: {receivedMessage}");
         }
 
         public void ProcessPersonWithoutCertificate()

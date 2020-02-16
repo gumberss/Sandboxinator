@@ -46,9 +46,7 @@ namespace Learning.RSA
 
         public byte[] Encrypt(String message, String receiverPublicKey)
         {
-            UTF8Encoding encoding = new UTF8Encoding();
-
-            byte[] messageBytes = encoding.GetBytes(message);
+            byte[] messageBytes = GetBytesFrom(message);
 
             _cryptoService.FromXmlString(receiverPublicKey);
 
@@ -93,15 +91,13 @@ namespace Learning.RSA
 
         private byte[] GetSignature(string message, X509Certificate2 certificate)
         {
-            UTF8Encoding encoding = new UTF8Encoding();
-
-            var messageBytes = encoding.GetBytes(message);
+            byte[] messageBytes = GetBytesFrom(message);
 
             var hash = GetHash(messageBytes);
 
             var encryptor = certificate.GetRSAPrivateKey();
 
-            var signature = encryptor.SignHash(hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pss);
+            var signature = encryptor.SignHash(hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
 
             return signature;
 
@@ -114,6 +110,28 @@ namespace Learning.RSA
             var hash = hasher.ComputeHash(messageBytes);
 
             return hash;
+        }
+
+        public bool ValidateMessage(Message message)
+        {
+            var messageBytes = GetBytesFrom(message.Text);
+
+            byte[] hash = GetHash(messageBytes);
+
+            var certificate = GetCertificate();
+
+            var decriptor = certificate.GetRSAPublicKey();
+
+            var isValidHash = decriptor.VerifyHash(hash, message.Signature, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
+
+            return isValidHash;
+        }
+
+        private static byte[] GetBytesFrom(string message)
+        {
+            UTF8Encoding encoding = new UTF8Encoding();
+
+            return encoding.GetBytes(message);
         }
     }
 
