@@ -15,7 +15,42 @@ namespace Learning.Strings
 
             var text = await WriteAndReadAsync(ingredients);
 
-            Console.WriteLine(text);
+            PrettyPresentation(text);
+        }
+
+        private void PrettyPresentation(string text)
+        {
+            foreach (var letter in text)
+            {
+                if (char.IsDigit(letter))
+                {
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                }
+                else if (char.IsUpper(letter))
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else if (char.IsWhiteSpace(letter))
+                {
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
+                else if (char.IsLetter(letter))
+                {
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                }
+
+                Console.Write(letter);
+            }
+
+            Console.ResetColor();
         }
 
         private static async Task<String> WriteAndReadAsync(string ingredients)
@@ -37,13 +72,13 @@ namespace Learning.Strings
         private static string GetIngredients()
         {
             return
-@"3 cenouras médias raspadas e picadas
-3 ovos
-1 xícara de óleo
-2 xícaras de açúcar
-2 xícaras de farinha de trigo
-1 colher(sopa) de fermento em pó
-1 pitada de sal";
+@"3 Cenouras médias raspadas e picadas
+3 Ovos
+1 Xícara de óleo
+2 Xícaras de açúcar
+2 Xícaras de farinha de trigo
+1 Colher(sopa) de fermento em pó
+1 Pitada de sal";
         }
 
     }
