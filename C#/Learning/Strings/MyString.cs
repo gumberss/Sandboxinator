@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,41 @@ namespace Learning.Strings
     {
         public async void Process()
         {
+
+
+            var texto1 = "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ";
+            var texto2 = "                                                                                                                                                                                                        ";
+            var texto = "aaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaa aaaaa aaaaaaaaa aaaa aaaaaaaaaaa aaaaa aaaaa aaaaaaa aaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaa aaaaa aaaaaaaaa aaaa aaaaaaaaaaa aaaaa aaaaa aaaaaaa aaaaaa aaaaaaa";
+            var texto4 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+
+            var texts = new String[] { texto1, texto2, texto, texto };
+
+            Stopwatch s = new Stopwatch();
+
+            foreach (var item in texts)
+            {
+                s.Restart();
+                for (int i = 0; i < 10_000_000; i++)
+                {
+                    int espacos1 = Method1(texto);
+                }
+
+                s.Stop();
+                Console.WriteLine(s.ElapsedMilliseconds);
+                s.Restart();
+                for (int i = 0; i < 10_000_000; i++)
+                {
+                    var espacos2 = Method2(texto);
+                }
+                s.Stop();
+                Console.WriteLine(s.ElapsedMilliseconds);
+
+                Console.WriteLine();
+
+            }
+
+            return;
+
             Console.OutputEncoding = Encoding.UTF8;
 
             var ingredients = GetIngredients();
@@ -16,6 +52,36 @@ namespace Learning.Strings
             var text = await WriteAndReadAsync(ingredients);
 
             PrettyPresentation(text);
+        }
+
+        private static int Method2(string texto)
+        {
+            int espacos = 0;
+
+            foreach (var c in texto)
+            {
+                if (c == ' ') espacos++;
+            }
+
+            return espacos;
+        }
+
+        private static int Method1(string text)
+        {
+            int indice = -1;
+            int espacos = 0;
+
+            while (true)
+            {
+                indice = text.IndexOf(' ', indice + 1);
+
+                if (indice == -1)
+                    break;
+
+                espacos++;
+            }
+
+            return espacos;
         }
 
         private void PrettyPresentation(string text)
