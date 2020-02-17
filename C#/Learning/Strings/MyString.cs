@@ -12,12 +12,12 @@ namespace Learning.Strings
         {
 
 
-            var texto1 = "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ";
-            var texto2 = "                                                                                                                                                                                                        ";
-            var texto = "aaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaa aaaaa aaaaaaaaa aaaa aaaaaaaaaaa aaaaa aaaaa aaaaaaa aaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaa aaaaa aaaaaaaaa aaaa aaaaaaaaaaa aaaaa aaaaa aaaaaaa aaaaaa aaaaaaa";
-            var texto4 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            var texto1 = "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ";
+            var texto2 = "                                                                                                    ";
+            var texto = "aaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaa aaaaa aaaaaaaaa aaaa aaaaaaaaaaa aaaaa aaaaa aaaaaaa aaaaaa aaaaaaa";
+            var texto4 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
-            var texts = new String[] { texto1, texto2, texto, texto };
+            var texts = new String[] { texto1, texto2, texto, texto, texto4 };
 
             Stopwatch s = new Stopwatch();
 
