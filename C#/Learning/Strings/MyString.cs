@@ -10,8 +10,6 @@ namespace Learning.Strings
     {
         public async void Process()
         {
-
-
             var texto1 = "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ";
             var texto2 = "                                                                                                    ";
             var texto = "aaaaaaaaaaaa aaaaaaaaaaaa aaaaaa aaaaaaaaaaaaaaa aaaaa aaaaaaaaa aaaa aaaaaaaaaaa aaaaa aaaaa aaaaaaa aaaaaa aaaaaaa";
