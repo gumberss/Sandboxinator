@@ -20,7 +20,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyAttribute();
+            var playing = new MyReflection();
 
             playing.Process();
             

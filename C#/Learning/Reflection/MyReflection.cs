@@ -1,14 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 
 namespace Learning.Reflection
 {
-    public class MyReflection
+    public class MyReflection : IInterface
     {
         public void Process()
         {
+
+            var myTypes = from type in Assembly.GetExecutingAssembly().GetTypes()
+                          where type.IsClass && typeof(IInterface).IsAssignableFrom(type)
+                          select type;
+
+            foreach (var item in myTypes)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine();
+
             Console.WriteLine(Serialize(new MyObj()));
             Console.WriteLine(Serialize(new MySerializableObj()));
             Console.WriteLine();
@@ -38,6 +49,11 @@ namespace Learning.Reflection
                 _ => "I don't know what you want me to do"
             };
         }
+    }
+
+    public interface IInterface
+    {
+
     }
 
     [MyLittleAttr]
