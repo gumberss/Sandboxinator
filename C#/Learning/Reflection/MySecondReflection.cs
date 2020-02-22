@@ -32,7 +32,17 @@ namespace Learning.Reflection
 
                     foreach (var member in type.GetMembers())
                     {
-                        Console.WriteLine("\t\tMember: "+ member.Name + "("+member.MemberType+ ")");
+                        Console.Write("\t\tMember: "+ member.Name + "("+member.MemberType+ ")");
+
+                        if(member.MemberType == MemberTypes.Property)
+                        {
+                            Console.Write(" Can read: {0}, Can write: {1}", (member as PropertyInfo).CanRead, (member as PropertyInfo).CanWrite);
+                            Console.WriteLine(" Get: {0} Set: {1}", (member as PropertyInfo).GetMethod?.Name, (member as PropertyInfo).SetMethod?.Name);
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                        }
                     }
                 }
             }
