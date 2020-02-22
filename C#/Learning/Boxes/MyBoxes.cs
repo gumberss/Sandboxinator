@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Running;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +11,9 @@ namespace Learning.Boxes
 
         public void Process()
         {
+            var summary = BenchmarkRunner.Run<TestBenchmark>();
+            return;
+
             var a = 123;
 
             object b = a;
@@ -21,5 +26,38 @@ namespace Learning.Boxes
             Console.WriteLine(d);
 
         }
+
+        public class TestBenchmark
+        {
+            private const int N = 10000;
+            private readonly byte[] data;
+
+            [Benchmark]
+            public void Box()
+            {
+                var a = 123;
+
+                object b = a;
+
+                int c = (int)b;
+            }
+
+            [Benchmark]
+            public void NoBox()
+            {
+                int a = 123;
+
+                int b = a;
+
+                int c = b;
+            }
+        }
+
+        public class Program
+        {
+           
+        }
+
+
     }
 }
