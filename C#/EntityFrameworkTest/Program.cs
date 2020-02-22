@@ -1,8 +1,14 @@
 ﻿using Learning;
 using Learning.AES;
+using Learning.Boxes;
 using Learning.Events;
+using Learning.Hash;
+using Learning.Interfaces;
+using Learning.Reflection;
 using Learning.RegularExpressions;
+using Learning.RSA;
 using Learning.Serialization;
+using Learning.Strings;
 using Learning.Threads;
 using Learning.Threads.BusinessRules;
 using Learning.TypeAndCollections;
@@ -14,7 +20,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyAes();
+            var playing = new InterfacesTest();
 
             playing.Process();
             
