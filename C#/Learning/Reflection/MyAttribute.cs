@@ -1,13 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace Learning.Reflection
 {
     public class MyAttribute
     {
+        [Detailed("{0} - {1}")]
+        [Summary("{0}")]
         public void Process()
         {
+            MethodBase method = MethodBase.GetCurrentMethod();
+
+            var methodSummary = Attribute.GetCustomAttribute(method, typeof(SummaryAttribute));
+            var methodDetailed = method.GetCustomAttribute(typeof(DetailedAttribute), true);
+
+            Console.WriteLine((methodSummary as SummaryAttribute).Format, "First way to get attributes from a method");
+            Console.WriteLine((methodDetailed as DetailedAttribute).Format, "Second way to get attributes from a method", "That is fun");
+
             List<Sell> sells = new List<Sell>()
             {
                 new Sell{ City = "City", Date = DateTime.Now, Name = "James", PaymentType = "Money", Price = 500, Product = "Flowers" },
