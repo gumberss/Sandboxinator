@@ -21,7 +21,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new CompileLambda();
+            var playing = new MySecondReflection();
 
             playing.Process();
             
