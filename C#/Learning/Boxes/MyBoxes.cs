@@ -1,14 +1,11 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Learning.Boxes
 {
     public class MyBoxes
     {
-
         public void Process()
         {
             var summary = BenchmarkRunner.Run<TestBenchmark>();
@@ -24,7 +21,6 @@ namespace Learning.Boxes
 
             Console.WriteLine(c);
             Console.WriteLine(d);
-
         }
 
         public class TestBenchmark
@@ -52,12 +48,5 @@ namespace Learning.Boxes
                 int c = b;
             }
         }
-
-        public class Program
-        {
-           
-        }
-
-
     }
 }
