@@ -31,7 +31,8 @@ namespace Learning.Reflection
         {
             var firstAttr = obj.GetType().GetCustomAttributes(false).FirstOrDefault()?.GetType() ?? obj.GetType();
 
-            return firstAttr switch  {
+            return firstAttr switch
+            {
                 { Name: "SerializableAttribute" } => "Ok, I'll serialize it",
                 { Name: "MyLittleAttrAttribute" } => "Ok, I'll, ..., ammm, ok, I got it... but I don't know exactly what to do",
                 _ => "I don't know what you want me to do"
@@ -51,6 +52,7 @@ namespace Learning.Reflection
 
     }
 
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class MyLittleAttrAttribute : Attribute
     {
 
