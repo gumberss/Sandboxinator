@@ -1,6 +1,7 @@
 ﻿using Learning;
 using Learning.AES;
 using Learning.Boxes;
+using Learning.CodeDOM;
 using Learning.Events;
 using Learning.Hash;
 using Learning.Interfaces;
@@ -20,7 +21,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyReflection();
+            var playing = new MyCodeDom();
 
             playing.Process();
             
