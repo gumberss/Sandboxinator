@@ -6,6 +6,7 @@ using Learning.Events;
 using Learning.Hash;
 using Learning.Interfaces;
 using Learning.Reflection;
+using Learning.Reflection.MySerializers;
 using Learning.RegularExpressions;
 using Learning.RSA;
 using Learning.Serialization;
@@ -21,7 +22,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MySecondReflection();
+            var playing = new AppService();
 
             playing.Process();
             
