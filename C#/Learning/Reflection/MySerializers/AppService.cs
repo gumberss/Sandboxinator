@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Learning.Reflection.MySerializers
 {
@@ -31,9 +30,11 @@ namespace Learning.Reflection.MySerializers
                 }
             };
 
-            var serialized = new MyJsonSerialize().Serialize(hero1);
+            var serialized = new MySerializer().Serialize(hero1, new MyXmlSerializer());
+            var serialized2 = new MySerializer().Serialize(hero1, new MyJsonSerialize());
 
             Console.WriteLine(serialized);
+            Console.WriteLine(serialized2);
         }
 
     }
