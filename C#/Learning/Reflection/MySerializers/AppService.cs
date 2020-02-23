@@ -31,7 +31,7 @@ namespace Learning.Reflection.MySerializers
                 }
             };
 
-            var serialized = new MyXmlSerializer().Serialize(hero1);
+            var serialized = new MyJsonSerialize().Serialize(hero1);
 
             Console.WriteLine(serialized);
         }
