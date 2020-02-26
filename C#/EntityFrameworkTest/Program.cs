@@ -5,6 +5,7 @@ using Learning.CodeDOM;
 using Learning.Events;
 using Learning.Hash;
 using Learning.Interfaces;
+using Learning.IO;
 using Learning.Reflection;
 using Learning.Reflection.MySerializers;
 using Learning.RegularExpressions;
@@ -22,7 +23,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new AppService();
+            var playing = new MyFileStream();
 
             playing.Process();
             
