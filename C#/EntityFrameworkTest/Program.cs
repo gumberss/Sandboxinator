@@ -23,7 +23,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyFileStream();
+            var playing = new MyZipFileStream();
 
             playing.Process();
             
