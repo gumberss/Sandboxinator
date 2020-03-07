@@ -2,6 +2,7 @@
 using DesignPatterns._2__Factory_Method.Example;
 using DesignPatterns._2__Factory_Method.RealExample;
 using DesignPatterns._3___Adapter;
+using DesignPatterns._4___Composite;
 using System;
 
 namespace DesignPatterns
@@ -10,7 +11,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            new Executor().Process();
+            new CompositeExecutor().Process();
 
 
 
