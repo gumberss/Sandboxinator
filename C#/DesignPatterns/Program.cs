@@ -1,6 +1,7 @@
 ﻿using DesignPatterns._1___AbstractFactory;
 using DesignPatterns._2__Factory_Method.Example;
 using DesignPatterns._2__Factory_Method.RealExample;
+using DesignPatterns._3___Adapter;
 using System;
 
 namespace DesignPatterns
@@ -9,6 +10,10 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            new Executor().Process();
+
+
+
             /*
             ContinentFactory factory = new AmericaFactory();
             AnimalWorld animalWorld = new AnimalWorld(factory);
@@ -35,20 +40,20 @@ namespace DesignPatterns
               */
 
 
-            Document[] documents = new Document[2];
+            //Document[] documents = new Document[2];
 
-            documents[0] = new Resume();
-            documents[1] = new Report();
+            //documents[0] = new Resume();
+            //documents[1] = new Report();
 
 
-            foreach (Document document in documents)
-            {
-                Console.WriteLine("\n" + document.GetType().Name + "--");
-                foreach (Page page in document.Pages)
-                {
-                    Console.WriteLine(" " + page.GetType().Name);
-                }
-            }
+            //foreach (Document document in documents)
+            //{
+            //    Console.WriteLine("\n" + document.GetType().Name + "--");
+            //    foreach (Page page in document.Pages)
+            //    {
+            //        Console.WriteLine(" " + page.GetType().Name);
+            //    }
+            //}
 
 
 
