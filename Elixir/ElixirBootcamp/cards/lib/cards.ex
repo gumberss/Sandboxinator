@@ -11,9 +11,17 @@ defmodule Cards do
       iex> Cards.hello()
       :world
 
+      Comand: iex -S mix
   """
   def create_deck do
-    ["Ace", "Two", "Three"]
+    values = ["Ace", "Two", "Three", "Four", "five"]
+    suits = ["Spades", "Clubs", "Heards", "Diamonds"]
+
+      for suit <- suits do # this method is a map method.
+        for value <- values do
+          value <> " " <> suit
+        end
+      end
   end
 
   def shuffle(deck) do
