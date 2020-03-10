@@ -26,7 +26,7 @@ defmodule Cards do
 
       for suit <- suits, value <- values do # do the same thing of the commented code above, but with a better syntax
           "#{value} of #{suit}"
-      end
+        end
   end
 
   def shuffle(deck) do
@@ -35,5 +35,9 @@ defmodule Cards do
 
   def contains?(deck, card) do
     Enum.member?(deck, card)
+  end
+
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
   end
 end
