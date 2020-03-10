@@ -17,13 +17,16 @@ defmodule Cards do
     values = ["Ace", "Two", "Three", "Four", "five"]
     suits = ["Spades", "Clubs", "Heards", "Diamonds"]
 
-      cards = for suit <- suits do # this method is a map method.
-        for value <- values do
-          "#{value} of #{suit}"
-        end
-      end
+      #cards = for suit <- suits do # this method is a map method.
+        #for value <- values do
+         # "#{value} of #{suit}"
+        #end
+      #end
+      #List.flatten(cards)
 
-      List.flatten(cards)
+      for suit <- suits, value <- values do # do the same thing of the commented code above, but with a better syntax
+          "#{value} of #{suit}"
+      end
   end
 
   def shuffle(deck) do
