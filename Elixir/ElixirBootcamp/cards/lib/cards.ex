@@ -19,7 +19,7 @@ defmodule Cards do
 
       for suit <- suits do # this method is a map method.
         for value <- values do
-          value <> " " <> suit
+          "#{value} of #{suit}"
         end
       end
   end
