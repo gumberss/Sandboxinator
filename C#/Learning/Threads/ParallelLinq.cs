@@ -6,9 +6,26 @@ using System.Threading.Tasks;
 
 namespace Learning
 {
-    class ParallelLinq
+    public class ParallelLinq
     {
-        void Process()
+        public void Process()
+        {
+            var list = Enumerable.Range(0, 10);
+
+            var result =
+                (from n in list.AsParallel()
+                orderby n
+                where BuscarNumeroPar(n)
+                select n).Take(2);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
+        private static void FirstParallelLinq()
         {
             Stopwatch s = new Stopwatch();
 
@@ -30,7 +47,7 @@ namespace Learning
 
         private static bool BuscarNumeroPar(int n)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep((11 - n) * 100);
 
             return n % 2 == 0;
         }

@@ -25,7 +25,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyHttpClientAsync();
+            var playing = new PLINQDataSample();
 
             playing.Process();
             

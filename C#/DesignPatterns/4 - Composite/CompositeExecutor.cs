@@ -32,8 +32,6 @@ namespace DesignPatterns._4___Composite
             ISell shopping = new Shopping(new[] { box2, pallet, pallet2}.ToList());
 
             Console.WriteLine("The total value of your shopping is: {0}", shopping.TotalValue());
-
-
         }
     }
 

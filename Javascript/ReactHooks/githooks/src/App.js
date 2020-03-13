@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(handlePositionReceived)
 
-    return () => navigator.geolocation.clearWatch(watchId)
+    return () => navigator.geolocation.clearWatch(watchId) //Executed when the component will be unmounted
   }, [])
 
   function handlePositionReceived({ coords }){
