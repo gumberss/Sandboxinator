@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Learning.Threads
 {
@@ -22,23 +23,38 @@ namespace Learning.Threads
 
             var orders = GetOrders();
             var query = (from ord in orders.AsParallel()
-                         orderby ord.CustomerID descending
+                         orderby ord.CustomerID
                          select new
                          {
+                             ord.CustomerID,
                              Details = ord.OrderID,
                              Date = ord.OrderDate,
-                             Shipped = ord.ShippedDate,
-                             ord.CustomerID
-                         }).AsSequential()
-                                .Take(5);
+                             Shipped = ord.ShippedDate
+                         }).Take(10);
 
-            foreach (var item in query)
-            {
-                Console.WriteLine(item.CustomerID);
-            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            query.ForAll(x => Console.WriteLine(x));
+            
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
+        }
+
+        private String MyOrder(Order ord)
+        {
+            Thread.Sleep((int)Math.Abs(ord.CustomerID.GetHashCode() / 10000000));
+
+            return ord.CustomerID;
+        }
+
+        private bool MyWhere(Order ord)
+        {
+            Console.WriteLine(ord);
+
+            return true;
         }
 
         static void TestDataSource()
@@ -62,6 +78,11 @@ namespace Learning.Threads
             public DateTime OrderDate { get; set; }
             public DateTime ShippedDate { get; set; }
             public OrderDetail[] OrderDetails { get { return _orderDetails.Value; } }
+
+            public override string ToString()
+            {
+                return $"{OrderID} - {CustomerID} - {OrderDate} - {ShippedDate}" ;
+            }
         }
 
         public class Customer

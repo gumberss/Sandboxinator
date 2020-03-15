@@ -25,7 +25,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new PLINQDataSample();
+            var playing = new CookClass();
 
             playing.Process();
             
