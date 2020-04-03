@@ -25,7 +25,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new CookClass();
+            var playing = new SleepYield();
 
             playing.Process();
             

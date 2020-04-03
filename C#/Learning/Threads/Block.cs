@@ -25,6 +25,11 @@ namespace Learning.Threads
             {
                 //the object couldn't be locked
             }
+
+            int integer = 0;
+
+            Interlocked.Add(ref integer, 1);
+            //integer == 1;
         }
 
     }
