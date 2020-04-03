@@ -4,6 +4,7 @@ using Learning.Boxes;
 using Learning.CodeDOM;
 using Learning.Events;
 using Learning.Exceptions;
+using Learning.Fors;
 using Learning.Hash;
 using Learning.HTTP;
 using Learning.Interfaces;
@@ -26,7 +27,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new Checked();
+            var playing = new Goto();
 
             playing.Process();
             
