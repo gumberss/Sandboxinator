@@ -40,6 +40,7 @@ namespace Learning.Exceptions
         {
             try
             {
+                // It won't ignore an arithmetic overflow exception and it will throw an exception if the number is greater then int.MaxValue
                 // The checked statements force C# to raise exception whenever underflow or stack overflow exception occurs due to integral type arithmetic or conversion issues.
                 checked
                 {
