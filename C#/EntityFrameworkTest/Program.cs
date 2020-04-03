@@ -3,6 +3,7 @@ using Learning.AES;
 using Learning.Boxes;
 using Learning.CodeDOM;
 using Learning.Events;
+using Learning.Exceptions;
 using Learning.Hash;
 using Learning.HTTP;
 using Learning.Interfaces;
@@ -25,7 +26,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new SleepYield();
+            var playing = new Checked();
 
             playing.Process();
             

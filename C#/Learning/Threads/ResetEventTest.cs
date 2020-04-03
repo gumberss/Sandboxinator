@@ -15,7 +15,7 @@ namespace Learning.Threads
             //You can use this class for better performance than ManualResetEvent when wait times are expected to be very short, and when the event does not cross a process boundary.
             ManualResetEventSlim mres = new ManualResetEventSlim(); 
 
-            //A single waiting thread is inblocked each time the Set method is called
+            //A single waiting thread is unblocked each time the Set method is called
             AutoResetEvent are = new AutoResetEvent(false);
 
             //Represents a synchronization primitive that is signaled when its count reaches zero.
