@@ -4,6 +4,7 @@ using Learning.Boxes;
 using Learning.CodeDOM;
 using Learning.Enums;
 using Learning.Events;
+using Learning.Events.EventTest;
 using Learning.Exceptions;
 using Learning.Fors;
 using Learning.Hash;
@@ -30,7 +31,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyIndexNotation();
+            var playing = new MyEventTest();
 
             playing.Process();
             
