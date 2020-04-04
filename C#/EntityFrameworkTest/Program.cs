@@ -2,6 +2,7 @@
 using Learning.AES;
 using Learning.Boxes;
 using Learning.CodeDOM;
+using Learning.Enums;
 using Learning.Events;
 using Learning.Exceptions;
 using Learning.Fors;
@@ -27,7 +28,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new Goto();
+            var playing = new MyEnum();
 
             playing.Process();
             
