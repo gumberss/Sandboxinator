@@ -8,6 +8,7 @@ using Learning.Exceptions;
 using Learning.Fors;
 using Learning.Hash;
 using Learning.HTTP;
+using Learning.IndexNotations;
 using Learning.Interfaces;
 using Learning.IO;
 using Learning.Reflection;
@@ -29,7 +30,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyStruct();
+            var playing = new MyIndexNotation();
 
             playing.Process();
             
