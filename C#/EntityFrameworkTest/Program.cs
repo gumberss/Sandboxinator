@@ -17,6 +17,7 @@ using Learning.RSA;
 using Learning.Serialization;
 using Learning.SImpleTests;
 using Learning.Strings;
+using Learning.Structs;
 using Learning.Threads;
 using Learning.Threads.BusinessRules;
 using Learning.TypeAndCollections;
@@ -28,7 +29,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyEnum();
+            var playing = new MyStruct();
 
             playing.Process();
             
