@@ -1,5 +1,6 @@
 ﻿using Learning;
 using Learning.AES;
+using Learning.Assemblies;
 using Learning.Boxes;
 using Learning.CodeDOM;
 using Learning.Enums;
@@ -31,7 +32,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyEventTest();
+            var playing = new MyAssembly();
 
             playing.Process();
             
