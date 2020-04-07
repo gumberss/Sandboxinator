@@ -24,6 +24,7 @@ using Learning.Structs;
 using Learning.Threads;
 using Learning.Threads.BusinessRules;
 using Learning.TypeAndCollections;
+using Learning.ReaderAndWriter;
 using System;
 
 namespace EntityFrameworkTest
@@ -32,7 +33,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyAssembly();
+            var playing = new ByBinaryReader();
 
             playing.Process();
             
