@@ -26,6 +26,7 @@ using Learning.Threads.BusinessRules;
 using Learning.TypeAndCollections;
 using Learning.ReaderAndWriter;
 using System;
+using Learning.Transactions;
 
 namespace EntityFrameworkTest
 {
@@ -33,7 +34,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyNetworkStream();
+            var playing = new MyTransactions();
 
             playing.Process();
             
