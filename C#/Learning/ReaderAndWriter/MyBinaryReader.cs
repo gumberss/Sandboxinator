@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Learning.ReaderAndWriter
 {
-    public class ByBinaryReader
+    public class MyBinaryReader
     {
         public void Process()
         {

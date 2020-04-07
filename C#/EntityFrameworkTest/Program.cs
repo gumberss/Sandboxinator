@@ -33,7 +33,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new ByBinaryReader();
+            var playing = new MyNetworkStream();
 
             playing.Process();
             
