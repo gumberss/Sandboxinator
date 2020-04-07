@@ -10,7 +10,7 @@ namespace LearningFramework
     {
         static void Main(string[] args)
         {
-            var myProcess = new EventLogs.MyEventLog();
+            var myProcess = new PerformanceCounters.MyPerformanceCounter();
 
             myProcess.Process();
         }
