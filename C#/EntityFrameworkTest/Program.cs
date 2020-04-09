@@ -34,7 +34,7 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var playing = new MyTransactions();
+            var playing = new MyRijndael();
 
             playing.Process();
             

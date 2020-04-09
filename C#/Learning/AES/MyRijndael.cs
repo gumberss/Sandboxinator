@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Learning.AES
 {
-    public class MyAes
+    public class MyRijndael
     {
         public void Process()
         {
@@ -13,14 +15,14 @@ namespace Learning.AES
 
             byte[] encrypted, key, initializationVector;
 
-            using (Aes aes = Aes.Create())
+            using (Rijndael rijndael = Rijndael.Create())
             {
                 Console.WriteLine(secret);
 
-                key = aes.Key;
-                initializationVector = aes.IV;
+                key = rijndael.Key;
+                initializationVector = rijndael.IV;
 
-                ICryptoTransform cryptoTransform = aes.CreateEncryptor();
+                ICryptoTransform cryptoTransform = rijndael.CreateEncryptor(rijndael.Key, rijndael.IV);
 
                 using (MemoryStream ms = new MemoryStream())
                 {
@@ -37,12 +39,9 @@ namespace Learning.AES
             ShowBytes("Key: ", key);
             ShowBytes("Encrypted: ", encrypted);
 
-            using (Aes aes = Aes.Create())
+            using (Rijndael rijndael = Rijndael.Create())
             {
-                aes.Key = key;
-                aes.IV = initializationVector;
-
-                ICryptoTransform decoder = aes.CreateDecryptor();
+                ICryptoTransform decoder = rijndael.CreateDecryptor(key, initializationVector);
 
                 using (MemoryStream memoryStream = new MemoryStream(encrypted))
                 using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decoder, CryptoStreamMode.Read))

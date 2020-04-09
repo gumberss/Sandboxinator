@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LearningFramework.Securities;
 
 namespace LearningFramework
 {
@@ -10,7 +11,7 @@ namespace LearningFramework
     {
         static void Main(string[] args)
         {
-            var myProcess = new PerformanceCounters.MyPerformanceCounter();
+            var myProcess = new ADPrincipal();
 
             myProcess.Process();
         }
