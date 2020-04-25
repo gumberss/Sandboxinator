@@ -6,6 +6,6 @@ defmodule Discuss.TopicController do
 
     changeset = Topic.changeset( %Topic{}, %{})
 
-
+    render conn, "new.html"
   end
 end
