@@ -1,4 +1,5 @@
 ﻿using System;
+using MemoryTricks.BoxingAndUnboxing;
 
 namespace MemoryTricks
 {
@@ -6,7 +7,7 @@ namespace MemoryTricks
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            FirstTest.WithBox();
         }
     }
 }
