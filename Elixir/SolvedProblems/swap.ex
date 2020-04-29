@@ -19,9 +19,7 @@ defmodule Solution do
     def swap([first, second | tail]) do
         [second, first] ++ swap(tail)
     end
-    
 end
-
 
 [_ | rest] = IO.read(:all) 
     |> String.split("\n")
