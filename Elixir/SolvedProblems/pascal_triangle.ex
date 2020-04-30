@@ -1,4 +1,4 @@
-https://www.hackerrank.com/challenges/pascals-triangle/problem
+#https://www.hackerrank.com/challenges/pascals-triangle/problem
 
 defmodule Solution do
 
@@ -26,14 +26,10 @@ end
 {value, _} =  Integer.parse(lines)
 Solution.solve(value, [])
 
-
-
 ####################
-
 #Another way:
 #https://www.hackerrank.com/challenges/pascals-triangle/forum/comments/561097
 ####################
-
 
 defmodule Solution do
 
@@ -54,7 +50,6 @@ defmodule Solution do
     def sum_line([ last ], [ last_second_list]), do: [last + last_second_list]
     def sum_line([ first | first_tail], [first_second_list | second_tail]) do
         [first + first_second_list] ++ sum_line(first_tail, second_tail)
-        
     end
 
 end
