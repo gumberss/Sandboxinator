@@ -30,7 +30,8 @@ Solution.solve(value, [])
 
 ####################
 
-#Another way
+#Another way:
+#https://www.hackerrank.com/challenges/pascals-triangle/forum/comments/561097
 ####################
 
 
