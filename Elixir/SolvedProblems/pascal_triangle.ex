@@ -1,3 +1,5 @@
+https://www.hackerrank.com/challenges/pascals-triangle/problem
+
 defmodule Solution do
 
     def solve(1, _), do: []
