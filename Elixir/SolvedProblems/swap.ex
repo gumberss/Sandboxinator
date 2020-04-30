@@ -14,15 +14,12 @@ defmodule Solution do
         |> List.to_string
         |> IO.puts
     end
-
     
     def swap([]), do: []
     def swap([first, second | tail]) do
         [second, first] ++ swap(tail)
     end
-    
 end
-
 
 [_ | rest] = IO.read(:all) 
     |> String.split("\n")
