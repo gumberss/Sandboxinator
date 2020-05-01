@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using MemoryTricks.BoxingAndUnboxing;
+using MemoryTricks.Strings;
 
 namespace MemoryTricks
 {
@@ -8,7 +9,9 @@ namespace MemoryTricks
     {
         static void Main(string[] args)
         {
-            FirstTest.WithoutBox();
+            var player = new ChangeString();
+
+            player.Process();
         }
     }
 }
