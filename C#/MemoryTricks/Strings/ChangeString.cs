@@ -8,7 +8,7 @@ namespace MemoryTricks.Strings
     {
         public unsafe void Process()
         {
-            String message = "I'm Iron Man";
+            const String message = "I'm Iron Man";
 
             Console.WriteLine(message);
 
@@ -25,6 +25,5 @@ namespace MemoryTricks.Strings
 
             Console.WriteLine(message);
         }
-
     }
 }
