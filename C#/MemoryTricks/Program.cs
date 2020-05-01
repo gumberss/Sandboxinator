@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using MemoryTricks.BoxingAndUnboxing;
 
 namespace MemoryTricks
@@ -7,7 +8,7 @@ namespace MemoryTricks
     {
         static void Main(string[] args)
         {
-            FirstTest.WithBox();
+            FirstTest.WithoutBox();
         }
     }
 }

@@ -3,18 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryTricks", "MemoryTricks.csproj", "{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryTricks", "MemoryTricks.csproj", "{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}.Debug|x64.ActiveCfg = Debug|x64
+		{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}.Debug|x64.Build.0 = Debug|x64
 		{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}.Release|x64.ActiveCfg = Release|x64
+		{B74F1A60-6EDB-48E4-B2C3-A5A1C90E2ABB}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

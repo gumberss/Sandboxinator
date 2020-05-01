@@ -3,7 +3,7 @@ namespace MemoryTricks.BoxingAndUnboxing
 {
     public class FirstTest
     {
-        private static int ITERATIONS = 1_000_000;
+        private static int ITERATIONS = 1_000_000_000;
 
         public static void WithBox()
         {
