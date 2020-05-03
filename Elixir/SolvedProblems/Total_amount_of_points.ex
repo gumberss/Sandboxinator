@@ -13,3 +13,15 @@ defmodule TotalPoints do
     end) + points(tail)
 end
 end
+
+# Cleaner way:
+
+defmodule TotalPoints do
+
+  def points([]), do: 0
+  def points([ <<x,":", y>> | tail]), do: score(x, y) + points(tail)
+
+  def score(x, y) when x > y, do: 3
+  def score(x, y) when x == y, do: 1
+  def score(x, y) when x < y, do: 0
+end
