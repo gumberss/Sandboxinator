@@ -43,7 +43,7 @@ def snail([]), do: []
 end
 
 
-# A better way (It was not made by my):
+# A better way (It was not made by me):
 
 defmodule Matrix do
   def horiz_reflect(m), do: m |> Enum.reverse
