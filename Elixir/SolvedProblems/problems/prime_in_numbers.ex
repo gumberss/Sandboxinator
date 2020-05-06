@@ -30,7 +30,7 @@ defmodule PrimesInNumbers do
     |> Enum.join
   end
 
-  def mmc(n), do: mmc(n, 2, [], :math.sqrt(n))
+  def mmc(n), do: mmc(n, 2, [], :math.sqrt(n) + 1)
   def mmc(1, _div, divisors, _limit), do: divisors
   def mmc(n, div, divisors, limit) when div == n, do: 1 |> mmc(n, [n] ++ divisors, limit)
   def mmc(n, div, divisors, limit) when div > limit, do: n |> mmc(n, divisors, limit)
