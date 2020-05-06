@@ -24,8 +24,4 @@ defmodule KataTail do
     def balanced_parens(n), do: List.flatten(balanced_parens(n, n, [], []))
 end
 
-Benchee.run(%{
- "kata" => fn -> Kata.balanced_parens(13) end,
- "kata_tail" => fn -> KataTail.balanced_parens(13) end
-},
-memory_time: 2)
+IO.inspect KataTail.balanced_parens(5)
