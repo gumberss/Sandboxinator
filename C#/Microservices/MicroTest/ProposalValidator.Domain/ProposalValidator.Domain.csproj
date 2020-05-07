@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Authors>Gustavo Marin Suppi</Authors>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Proposal\**" />
+    <EmbeddedResource Remove="Proposal\**" />
+    <None Remove="Proposal\**" />
+  </ItemGroup>
+
+</Project>
