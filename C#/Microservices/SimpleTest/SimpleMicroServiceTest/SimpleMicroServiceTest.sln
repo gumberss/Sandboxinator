@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer", "MainProject\Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Rebus", "Infra.Rebus\Infra.Rebus.csproj", "{E33FF6F3-E8A4-4538-830B-050D9186FE8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Publisher\Publisher.csproj", "{68EDAC8C-1198-454D-B295-AC6F9440758D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Publisher", "Publisher\Publisher.csproj", "{68EDAC8C-1198-454D-B295-AC6F9440758D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rabbit-consumer", "rabbit-consumer\rabbit-consumer.csproj", "{AA5ADCF2-7A61-4AB7-8A45-F89A1590A930}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rabbit-consumer", "rabbit-consumer\rabbit-consumer.csproj", "{AA5ADCF2-7A61-4AB7-8A45-F89A1590A930}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rabbit-publisher", "rabbit-publisher\rabbit-publisher.csproj", "{139D99CD-E1B9-41C1-8B9F-ACCB5D6346C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rabbit-publisher", "rabbit-publisher\rabbit-publisher.csproj", "{139D99CD-E1B9-41C1-8B9F-ACCB5D6346C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

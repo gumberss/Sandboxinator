@@ -13,6 +13,7 @@ using Infra.Rebus.Messages;
 using Rebus.SimpleInjector;
 using System.Reflection;
 using Rebus.Activation;
+using Rebus.Persistence.FileSystem;
 
 namespace MainProject
 {
@@ -27,9 +28,10 @@ namespace MainProject
                 Username = "test",
                 Port = 5672
             };
+
             using (var activator = new BuiltinHandlerActivator())
             {
-                activator.Register(() => new ConsumerHandler());
+                activator.Register((bus, context) => new ConsumerHandler(bus));
 
                 Configure.With(activator)
                     .Transport(x => x.UseRabbitMq($"amqp://{msgBroker.Username}:{msgBroker.Password}@{msgBroker.HostName}:{msgBroker.Port}/", "consumer"))

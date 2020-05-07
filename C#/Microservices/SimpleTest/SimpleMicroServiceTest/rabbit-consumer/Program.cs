@@ -9,19 +9,23 @@ namespace rabbit_consumer
     {
         static void Main(string[] args)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            var factory = new ConnectionFactory()
+            {
+                HostName = "localhost",
+                UserName = "test",
+                Password = "test"
+            };
 
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.ExchangeDeclare(exchange: "lalapo", type: ExchangeType.Fanout,durable:true);
+                channel.ExchangeDeclare(exchange: "exchange", type: ExchangeType.Fanout, durable: true);
 
-                var queueName = channel.QueueDeclare("input_queue", durable: true).QueueName;
+                var queueName = channel.QueueDeclare("my_queue", durable: true).QueueName;
 
                 channel.QueueBind(queue: queueName,
-                              exchange: "lalapo",
-                              routingKey: "" );
-
+                              exchange: "exchange",
+                              routingKey: "");
 
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
