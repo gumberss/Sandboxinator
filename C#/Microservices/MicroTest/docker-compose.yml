@@ -1,0 +1,30 @@
+version: '3.5'
+
+networks:
+  field-network:
+    name: field-network
+
+services:
+  #API
+  proposal-webapi:
+    build:
+      context: .
+      dockerfile: Proposal.WebApi/Proposal.WebApi.Dockerfile
+    restart: always
+    ports: 
+      - "9000:80"
+    environment:
+    #DB
+      - DatabaseProtocol=http
+      - DatabaseHost=field-database
+      - DatabasePort=8080
+      - DatabaseName=Test
+    #MsgBroker
+      - MsgBrokerHostName=Test
+      - MsgBrokerUserName=guest
+      - MsgBrokerPassword=guest
+      - MsgBrokerPort=5600
+    networks:
+      - field-network
+
+ 
