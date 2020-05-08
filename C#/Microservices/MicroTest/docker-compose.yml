@@ -15,19 +15,11 @@ services:
             - "9000:80"
         environment:
         #DB
-            - DatabaseProtocol=http
-            - DatabaseHost=field-database
-            - DatabasePort=8080
-            - DatabaseName=Test
-        #MsgBroker
-            - MsgBrokerHostName=Test
-            - MsgBrokerUserName=guest
-            - MsgBrokerPassword=guest
-            - MsgBrokerPort=5600
-      
+            - DbConnectionString=Server=proposal-database;Database=Attendance.Proposals;User Id=sa;Password=Pr0p0s@l!
         networks:
             - default-network
-            
+        depends_on:
+            - proposal-database
     proposal-database:
         image: mcr.microsoft.com/mssql/server:2019-latest
         environment:

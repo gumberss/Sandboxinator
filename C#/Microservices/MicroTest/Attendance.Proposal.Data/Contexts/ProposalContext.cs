@@ -18,7 +18,7 @@ namespace Attendance.Proposals.Data.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_config?.Value?.DbConnectionString);
+            optionsBuilder.UseSqlServer(_config.Value.DbConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

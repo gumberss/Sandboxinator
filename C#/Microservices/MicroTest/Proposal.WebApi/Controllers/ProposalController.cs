@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Attendance.Proposals.Data.Contexts;
 using Attendance.Proposals.Domain.Interfaces.Repositories;
@@ -26,9 +27,14 @@ namespace Proposal.WebApi.Controllers
         }
 
         [HttpGet]
-        public String Get()
+        public IActionResult Get()
         {
-            return "Hello!";
+            using (_context)
+            {
+                var data = _proposalRepository.GetAll().ToList();
+
+                return Ok(data);
+            }
         }
 
         [HttpPost]
