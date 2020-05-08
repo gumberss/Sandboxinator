@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Attendance.Proposals.Configurations.Configurations;
+using Attendance.Proposals.Data.Contexts;
+using Attendance.Proposals.Data.Repositories;
+using Attendance.Proposals.Domain.Interfaces.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Proposal.WebApi
 {
@@ -25,6 +23,9 @@ namespace Proposal.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.Configure<EnvironmentConfig>(Configuration);
+            services.AddScoped<ProposalContext>();
+            services.AddTransient<IProposalRepository, ProposalRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
