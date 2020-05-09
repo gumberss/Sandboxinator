@@ -17,7 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Attendance.Proposal.Data\Attendance.Proposals.Data.csproj" />
     <ProjectReference Include="..\Attendance.Proposals.Configurations\Attendance.Proposals.Configurations.csproj" />
-    <ProjectReference Include="..\ProposalValidator.Domain\ProposalValidator.Domain.csproj" />
   </ItemGroup>
 
 </Project>

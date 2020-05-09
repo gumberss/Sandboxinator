@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Attendance.Proposals.Data.Contexts;
+using Attendance.Proposals.Domain.DTOs;
 using Attendance.Proposals.Domain.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProposalValidator.Domain.DTOs;
 
 namespace Proposal.WebApi.Controllers
 {

@@ -5,12 +5,6 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attendance.Proposals.WebApi", "Proposal.WebApi\Attendance.Proposals.WebApi.csproj", "{B088377F-F9E1-451F-B1CC-3176E8E1B5C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProposalValidator.Application", "ProposalValidator.Application\ProposalValidator.Application.csproj", "{7ACE3A48-95CD-459B-A01F-72A159EA7392}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProposalValidator.Domain", "ProposalValidator.Domain\ProposalValidator.Domain.csproj", "{65D6AFEE-ED34-4FC5-B9CE-7B42D77C3720}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProposalValidator.Handler", "ProposalValidator.Handler\ProposalValidator.Handler.csproj", "{766E30A8-19C2-49EA-B427-2097BF1C3445}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Attendance", "Attendance", "{239BEF57-4CF3-4A09-8AE8-98F433B763DC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attendance.Proposals.Data", "Attendance.Proposal.Data\Attendance.Proposals.Data.csproj", "{4ECB0588-40E7-4B6F-AC2A-9B2E559D8F58}"
@@ -43,18 +37,6 @@ Global
 		{B088377F-F9E1-451F-B1CC-3176E8E1B5C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B088377F-F9E1-451F-B1CC-3176E8E1B5C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B088377F-F9E1-451F-B1CC-3176E8E1B5C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7ACE3A48-95CD-459B-A01F-72A159EA7392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7ACE3A48-95CD-459B-A01F-72A159EA7392}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7ACE3A48-95CD-459B-A01F-72A159EA7392}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7ACE3A48-95CD-459B-A01F-72A159EA7392}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65D6AFEE-ED34-4FC5-B9CE-7B42D77C3720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65D6AFEE-ED34-4FC5-B9CE-7B42D77C3720}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65D6AFEE-ED34-4FC5-B9CE-7B42D77C3720}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65D6AFEE-ED34-4FC5-B9CE-7B42D77C3720}.Release|Any CPU.Build.0 = Release|Any CPU
-		{766E30A8-19C2-49EA-B427-2097BF1C3445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{766E30A8-19C2-49EA-B427-2097BF1C3445}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{766E30A8-19C2-49EA-B427-2097BF1C3445}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{766E30A8-19C2-49EA-B427-2097BF1C3445}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4ECB0588-40E7-4B6F-AC2A-9B2E559D8F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4ECB0588-40E7-4B6F-AC2A-9B2E559D8F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ECB0588-40E7-4B6F-AC2A-9B2E559D8F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
