@@ -5,6 +5,6 @@ defmodule TwoToOne do
     String.to_charlist(a) ++ String.to_charlist(b)
       |> MapSet.new
       |> MapSet.to_list
-      |>List.to_string
+      |> List.to_string
   end
 end

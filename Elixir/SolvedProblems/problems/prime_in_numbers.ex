@@ -3,40 +3,40 @@
 defmodule PrimesInNumbers do
   def prime_factors(n) do
     n
-    |> mmc
+    |> lcm
     |> Enum.group_by(&(&1))
     |> Enum.map(&factor/1)
     |> Enum.join
   end
 
-  def mmc(n), do: mmc(n, 2, [])
-  def mmc(1, _div, divisors), do: divisors
-  def mmc(n, div, divisors) when rem(n, div) != 0, do: n |> mmc(div + 1, divisors)
-  def mmc(n, div, divisors), do: n / div |> round |> mmc(div, divisors ++ [div])
+  def lcm(n), do: lcm(n, 2, [])
+  def lcm(1, _div, divisors), do: divisors
+  def lcm(n, div, divisors) when rem(n, div) != 0, do: n |> lcm(div + 1, divisors)
+  def lcm(n, div, divisors), do: n / div |> round |> lcm(div, [div | divisors])
 
   def factor({key, values}) when length(values) == 1, do: "(#{key})"
   def factor({key, values}), do: "(#{key}**#{length(values)})"
 end
 
 
-# My better way (adding limmit to calculate):
+# My better way (adding limit to calculate):
 
 defmodule PrimesInNumbers do
   def prime_factors(n) do
     n
-    |> mmc
+    |> lcm
     |> Enum.group_by(&(&1))
     |> Enum.map(&factor/1)
     |> Enum.join
   end
 
-  def mmc(n), do: mmc(n, 2, [], :math.sqrt(n) + 1)
-  def mmc(1, _div, divisors, _limit), do: divisors
-  def mmc(n, div, divisors, limit) when div == n, do: 1 |> mmc(n, [n] ++ divisors, limit)
-  def mmc(n, div, divisors, limit) when div > limit, do: n |> mmc(n, divisors, limit)
-  def mmc(n, div, divisors, limit) when rem(n, div) != 0, do: n |> mmc(div + 1, divisors, limit)
-  def mmc(n, div, divisors, limit), do: n / div |> round |> mmc(div, divisors ++ [div], limit)
+  def lcm(n), do: lcm(n, 2, [], :math.sqrt(n))
+  def lcm(n, div, divisors, _limit) when div == n, do: [n] ++ divisors
+  def lcm(n, div, divisors, limit) when div > limit, do: n |> lcm(n, divisors, limit)
+  def lcm(n, div, divisors, limit) when rem(n, div) != 0, do: n |> lcm(div + 1, divisors, limit)
+  def lcm(n, div, divisors, limit), do: n / div |> round |> lcm(div, [div | divisors], limit)
 
   def factor({key, values}) when length(values) == 1, do: "(#{key})"
   def factor({key, values}), do: "(#{key}**#{length(values)})"
 end
+
