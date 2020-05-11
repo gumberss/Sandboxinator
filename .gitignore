@@ -3,5 +3,5 @@ C#/**/.vs
 C#/**/bin
 C#/**/obj
 Elixir/**/.elixir_ls
-
+Elixir/**/*.secret.exs
 **/node_modules
