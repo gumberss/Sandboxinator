@@ -38,8 +38,8 @@ defmodule Discuss.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:ueberauth, "~> 0.3"},
-     {:ueberauth_github, "~> 0.4"}
+     {:ueberauth, "~> 0.5"},
+     {:ueberauth_github, "~> 0.7"}
     ]
   end
 
