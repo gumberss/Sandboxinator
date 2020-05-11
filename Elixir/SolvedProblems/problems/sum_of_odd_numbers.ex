@@ -12,7 +12,7 @@ defmodule SumOfOdd do
 end
 
 
-# Is could be as simple as:
+# It could be as simple as:
 defmodule SumOfOdd do
   def row_sum_odd_numbers(n), do: n * n * n
 end
