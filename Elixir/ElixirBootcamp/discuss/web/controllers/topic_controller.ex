@@ -51,7 +51,6 @@ defmodule Discuss.TopicController do
       {:error, changeset} ->
         render conn, "edit.html", changeset: changeset, topic: old_topic
     end
-
   end
 
 end
