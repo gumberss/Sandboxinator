@@ -13,10 +13,16 @@ defmodule Discuss.AuthController do
       email: user_email,
       provider: Atom.to_string(auth.provider)
     }
-IO.inspect user_params
+
     changeset = User.changeset(%User{}, user_params)
 
     signin(conn, changeset)
+  end
+
+  def signout(conn, _params) do
+    conn
+    |> configure_session(drop: true)
+    |> redirect(to: topic_path(conn, :index))
   end
 
   defp signin(conn, changeset) do
