@@ -24,7 +24,7 @@ app.post('/events', (req, res) => {
 
         const post = posts[postId]
 
-        post.comments.pusj({
+        post.comments.push({
             id, 
             content
         })
