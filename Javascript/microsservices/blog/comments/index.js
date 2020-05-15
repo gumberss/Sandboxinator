@@ -32,7 +32,7 @@ app.post('/posts/:id/comments', async (req, resp) => {
 	await axios.post('http://localhost:4005/events', {
 		type: 'CommentCreated',
 		data: {
-			commentId,
+			id: commentId,
 			content,
 			postId: req.params.id,
 		},
@@ -44,7 +44,7 @@ app.post('/posts/:id/comments', async (req, resp) => {
 app.post('/events', (req, res) => {
   console.log('Received Event:', req.body.type)
 
-  
+
 
   res.send({})
 })
