@@ -23,8 +23,9 @@ app.post('/posts/:id/comments', async (req, resp) => {
 	let comments = commentsByPostId[postId] || []
 
 	comments.push({
-		commentId,
+		id: commentId,
 		content,
+		status: 'pending',
 	})
 
 	commentsByPostId[postId] = comments
@@ -35,6 +36,7 @@ app.post('/posts/:id/comments', async (req, resp) => {
 			id: commentId,
 			content,
 			postId: req.params.id,
+			status: 'pending'
 		},
 	})
 
@@ -42,13 +44,10 @@ app.post('/posts/:id/comments', async (req, resp) => {
 })
 
 app.post('/events', (req, res) => {
-  console.log('Received Event:', req.body.type)
+	console.log('Received Event:', req.body.type)
 
-
-
-  res.send({})
+	res.send({})
 })
-
 
 app.listen(4001, () => {
 	console.log('Listening on 4001')
