@@ -24,13 +24,14 @@ app.post('/events', (req, res) => {
 			comments: [],
 		}
 	} else if (type === 'CommentCreated') {
-		const { id, content, postId } = data
+		const { id, content, status, postId } = data
 
 		const post = posts[postId]
 
 		post.comments.push({
 			id,
-			content,
+            content,
+            status
 		})
 	} else if (type === 'CommentUpdated') {
 		const { id, content, status, postId } = data
