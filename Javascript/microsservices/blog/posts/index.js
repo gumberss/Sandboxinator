@@ -23,7 +23,8 @@ app.post('/posts', async (req, resp) => {
 		title,
 	}
 
-	await axios.post('http://localhost:4005/events', {
+	//event-bus-srv -> the cluser ip service's name of event-bus 
+	await axios.post('http://event-bus-srv:4005/events', {
 		type: 'PostCreated',
 		data: {
 			id,
