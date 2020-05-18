@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2aplha3
+apiVersion: skaffold/v2alpha3
 kind: Config
 deploy:
   kubectl:
@@ -7,63 +7,63 @@ deploy:
 build:
   local:
     push: false
-    artifacts:
+  artifacts:
 
-      - image: gumberss/client
-        context: client
-        docker:
-          dockerfile: Dockerfile
-        sync:
-          manual:
-            # replace the file changed
-            - src: 'src/**/*.js' 
-            # if we change any other file (not in src) scaffold will completely rebuild the image and update the deployment
-              dest: .
+    - image: gumberss/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          # replace the file changed
+          - src: 'src/**/*.js' 
+          # if we change any other file (not in src) scaffold will completely rebuild the image and update the deployment
+            dest: .
 
-      - image: gumberss/comments
-        context: comments
-        docker:
-          dockerfile: Dockerfile
-        sync:
-          manual:
-            - src: '*.js'
-              dest: .
+    - image: gumberss/comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
 
-      - image: gumberss/event-bus
-        context: event-bus
-        docker:
-          dockerfile: Dockerfile
-        sync:
-          manual:
-            - src: '*.js'
-              dest: .
+    - image: gumberss/event-bus
+      context: event-bus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
 
-      - image: gumberss/moderation
-        context: moderation
-        docker:
-          dockerfile: Dockerfile
-        sync:
-          manual:
-            - src: '*.js'
-              dest: .
-      
-      - image: gumberss/posts
-        context: posts
-        docker:
-          dockerfile: Dockerfile
-        sync:
-          manual:
-            - src: '*.js'
-              dest: .
+    - image: gumberss/moderation
+      context: moderation
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    
+    - image: gumberss/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
 
-      - image: gumberss/query
-        context: query
-        docker:
-          dockerfile: Dockerfile
-        sync:
-          manual:
-            - src: '*.js'
-              dest: .
+    - image: gumberss/query
+      context: query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
 
             
 

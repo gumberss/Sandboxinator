@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { findAllByTitle } from '@testing-library/react'
 
 export default () => {
 	const [title, setTitle] = useState('')
