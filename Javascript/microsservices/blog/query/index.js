@@ -47,7 +47,7 @@ const handleEvent = (type, data) => {
 app.post('/events', (req, res) => {
 	const { type, data } = req.body
 
-	handleEvents(type, data)
+	handleEvent(type, data)
 
 	res.send({})
 })
