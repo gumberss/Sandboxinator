@@ -1,0 +1,2 @@
+ aws s3 ls [storage-name] -> apresenta os storages
+ aws s3 cp [file-name.ext] s3://[storage] -> copia arquivos para o storage
