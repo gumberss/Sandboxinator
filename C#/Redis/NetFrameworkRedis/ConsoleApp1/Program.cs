@@ -17,6 +17,12 @@ namespace ConsoleApp1
 
                 var data = db.StringGet("batman");
 
+                var dataHash = db.HashGetAll("batmanHash");
+
+                var batmanType = db.HashGet("batmanHash", "type");
+                var batmanName = db.HashGet("batmanHash", "Name");
+
+
                 Console.WriteLine(data);
             }
         }
