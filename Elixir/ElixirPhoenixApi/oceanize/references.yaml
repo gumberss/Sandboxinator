@@ -1,0 +1,11 @@
+
+API:
+  - https://medium.com/oceanize-geeks/making-a-rest-api-in-elixir-phoenix-54006df1b573
+
+postgress with docker:
+  - https://medium.com/@renato.groffe/postgresql-docker-executando-uma-inst%C3%A2ncia-e-o-pgadmin-4-a-partir-de-containers-ad783e85b1a4
+
+command renamed:
+  mix phoenix.gen.model to mix phx.gen.schema:
+    - https://elixirforum.com/t/phoenix-v1-3-4-mix-phoenix-gen-model-still-uses-web/17211
+
