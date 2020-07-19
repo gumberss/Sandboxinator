@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*.yaml
+build:
+  local:
+    push: false
+  artifacts:
+    - image: elixir-test
+      context: oceanize
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'oceanize/lib/**/*'
+            dest: .
+   
+
