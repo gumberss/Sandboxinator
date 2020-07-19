@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tickets-db-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oceanize-db
+  template:
+    metadata:
+      labels:
+        app: oceanize-db
+    spec:
+      containers:
+        - name: db
+          image: postgres:13-alpine
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oceanize-srv
+spec:
+  selector:
+    app: oceanize-db
+  ports:
+    - name: db
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+
+  

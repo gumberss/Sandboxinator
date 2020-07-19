@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oceanize-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oceanize
+  template:
+    metadata: 
+      labels:
+        app: oceanize
+    spec:
+      containers:
+        - name: oceanize
+          image: gumberss/elixir-test
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oceanize-srv
+spec:
+  selector:
+    app: oceanize
+  ports:
+    - name: oceanize-port
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
