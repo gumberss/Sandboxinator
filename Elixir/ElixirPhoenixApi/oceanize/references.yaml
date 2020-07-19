@@ -9,3 +9,10 @@ command renamed:
   mix phoenix.gen.model to mix phx.gen.schema:
     - https://elixirforum.com/t/phoenix-v1-3-4-mix-phoenix-gen-model-still-uses-web/17211
 
+live reload:
+  - https://github.com/phoenixframework/phoenix_live_reload
+
+commands:
+  - mix ecto.create
+  - mix ecto.migrate
+  - mix phx.server
