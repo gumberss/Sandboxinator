@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tickets-db-depl
+  name: oceanize-db-depl
 spec:
   replicas: 1
   selector:
@@ -15,11 +15,15 @@ spec:
       containers:
         - name: db
           image: postgres:13-alpine
+          env:
+            - name: POSTGRES_PASSWORD
+              value: postgres
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: oceanize-srv
+  name: oceanize-db-srv
 spec:
   selector:
     app: oceanize-db
