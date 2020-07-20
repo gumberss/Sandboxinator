@@ -8,7 +8,7 @@ defmodule Oceanize.Repo do
         |> Keyword.put(:username, "postgres")#System.get_env("PGUSER")
         |> Keyword.put(:password, "postgres")
         |> Keyword.put(:database, "oceanize")
-        |> Keyword.put(:hostname, "localhost")
+        |> Keyword.put(:hostname, "oceanize-db-srv")
         |> Keyword.put(:port, "5432" |> String.to_integer)
       {:ok, config}
     end
