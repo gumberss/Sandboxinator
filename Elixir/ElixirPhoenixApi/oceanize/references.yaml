@@ -12,6 +12,10 @@ command renamed:
 live reload:
   - https://github.com/phoenixframework/phoenix_live_reload
 
+rebar3 problem:
+  - command: mix local.rebar --force 
+  - https://github.com/klarna/kastlex/commit/39c6b1768e41254d7b98593e213c118d702ba412
+
 commands:
   - mix ecto.create
   - mix ecto.migrate
