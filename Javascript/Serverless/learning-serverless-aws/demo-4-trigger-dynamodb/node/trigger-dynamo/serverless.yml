@@ -24,6 +24,14 @@ resources:
             AttributeType: S
           - AttributeName: nome
             AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: nome
+            KeyType: RANGE
+        ProvisionedThrougput: # How many times this service can be called in one second
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
 
 functions:
   hero-insert:

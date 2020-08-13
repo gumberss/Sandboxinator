@@ -1,18 +1,60 @@
+const uuid = require('uuid')
+
 class Handler {
-	async main() {
+	constructor({ dynamoDbSvc }) {
+		this.dynamoDbSvc = dynamoDbSvc
+		this.dynamodbTable = process.env.DYNAMODB_TABLE
+	}
+
+	async insertItem(params) {
+		return this.dynamoDbSvc.put(params).promise()
+	}
+
+	prepareData(data) {
+		const params = {
+			TableName: this.dynamodbTable,
+			Item: {
+				...data,
+				id: uuid.v1(),
+				createAt: new Date().toISOString(),
+			},
+		}
+
+		return params
+	}
+
+	handelrSuccess(data) {
+		return {
+			statusCode: 200,
+			body: JSON.stringify(data),
+		}
+	}
+
+	handleError(data) {
+		return {
+			statusCode: data.statusCode || 501,
+			headers: { 'Content-Type': 'text/plain' },
+			body: "Couldn't create the item!!",
+		}
+	}
+
+	async main(event) {
 		try {
-			return {
-				statusCode: 200,
-				body: 'Hello',
-			}
+			const data = JSON.parse(event.body)
+			const dbParams = this.prepareData(data)
+			await this.insertItem(dbParams)
+			return this.handelrSuccess(dbParams.Item)
 		} catch (err) {
-			return {
-				statusCode: 200,
-				body: 'An error ' + JSON.stringify(err),
-			}
+			console.log('Oh no!', err.stack)
+			this.handleError({ statusCode: 500 })
 		}
 	}
 }
 
-const handler = new Handler()
+const AWS = require('aws-sdk') //npm i aws-sdk
+const dynamoDB = new AWS.DynamoDB.DocumentClient()
+const handler = new Handler({
+	dynamoDbSvc: dynamoDB,
+})
+
 module.exports = handler.main.bind(handler)
