@@ -1,0 +1,27 @@
+GET /accounts/_analyze
+{
+  "tokenizer": "standard",
+  "text": "My little test is my@test.com"
+}
+
+GET /accounts/_analyze
+{
+  "tokenizer": "whitespace",
+  "text": "My little test is my@test.com"
+}
+
+GET /accounts/_analyze
+{
+  "tokenizer": "standard",
+  "filter": ["lowercase"],
+  "text": "My blue Blue red RED"
+}
+
+
+GET /accounts/_analyze
+{
+  "tokenizer": "standard",
+  "filter": ["lowercase", "unique"],
+  "text": "My blue Blue red RED"
+}
+

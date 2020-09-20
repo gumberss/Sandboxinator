@@ -1,0 +1,186 @@
+POST /accounts/_doc
+{
+  "name": "Bruce",
+  "lastname": "Wayne",
+  "job_description": "Batman"
+}
+
+
+GET /accounts/_doc/_search
+
+PUT /accounts/_doc/1
+{
+  "name": "Bruce",
+  "lastname": "Wayne",
+  "job_description": "Batman updated"
+}
+
+GET /accounts/_doc/1
+
+DELETE /accounts/_doc/1
+
+DELETE /accounts
+
+POST /accounts/_doc/_bulk
+{"index":{"_id":1}}
+{"name":"Bruce","lastname":"Wayne","job_description":"Batman", "age": 30}
+{"index":{"_id":2}}
+{"name":"Bruce 2","lastname":"Wayne","job_description":"Batman novo", "age": 20}
+{"index":{"_id":4}}
+{"name":"Bruce 3","lastname":"Wayne","job_description":"Batman updated amigo do robin", "age": 40}
+
+
+GET accounts/_doc/_search
+{
+  "query": {
+    "match": {
+      "job_description": "Batman"
+    }
+  }
+}
+
+GET accounts/_doc/_search
+{
+  "query": {
+    "match_phrase": {
+      "job_description": "Batman updated amigo do robin"
+    }
+  }
+}
+
+GET accounts/_doc/_search
+{
+  "query": {
+    "match": {
+      "job_description": "Batman updated"
+    }
+  }
+}
+
+GET accounts/_doc/_search
+{
+  "query": {
+    "bool": {
+      "must":[
+        {
+          "match": {
+            "job_description": "Batman"
+          }
+        },
+        {
+          "match_phrase": {
+            "job_description": "amigo do robin"
+          }
+        }
+      ]
+    }
+  }
+}
+
+GET accounts/_doc/_search
+{
+  "query": {
+    "bool": {
+      "must_not":[
+        {
+          "match_phrase": {
+            "job_description": "amigo do robin"
+          }
+        }
+      ]
+    }
+  }
+}
+
+GET accounts/_doc/_search
+{
+  "query": {
+    "bool": {
+      "should":[
+        {
+          "match": {
+            "job_description":{
+              "query": "amigo",
+              "boost": 30 
+            }
+          }
+        },
+        {
+          "match": {
+            "job_description": "novo"
+          }
+        }
+        
+      ]
+    }
+  }
+}
+
+GET accounts/_doc/_search
+{
+  "query": {
+   "range" : {
+     "age": {
+       "gte": 30
+     }
+   }
+  },
+  "sort": [
+    { "age"  : "desc" }
+  ]
+}
+
+
+POST /_xpack/sql?format=txt
+{
+  "query": "SELECT name, age FROM accounts ORDER BY age DESC LIMIT 5"
+}
+
+GET accounts/_doc/_search
+{
+  "query":{
+    "match": {
+      "job_description":  "batman"
+    }
+  },
+  "aggregations": {
+    "age": {
+      "range": {
+        "field": "age",
+        "ranges": [
+        {
+          "key": "19-31",
+          "from": 20,
+          "to": 31
+        },
+        {
+          "key": "32-40",
+          "from": 32,
+          "to": 41
+        }
+        ]
+      }
+    }
+  }
+}
+
+POST /accounts/_doc/3/_update
+{
+  "doc": {
+    "flagged": true
+  }
+}
+
+#mudar configurações
+PUT /accounts
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  }
+}
+
+
+# hits -> score -> relevancia do item
+# quanto maior o texto menor a relevância da palavra buscada
+# "boost" -> aumenta a relevancia dado registro que se encaixar na consulta
