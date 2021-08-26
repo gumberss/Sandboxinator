@@ -15,7 +15,7 @@ services:
             - "9000:80"
         environment:
         #DB
-            - DbConnectionString=Server=proposal-database;Database=Attendance.Proposals;User Id=sa;Password=Pr0p0s@l!
+            - DbConnectionString=Server=proposal-database;Database=Attendance.Proposals;User Id=sa;[changed_with_no_reason]
         networks:
             - default-network
         depends_on:
@@ -23,7 +23,7 @@ services:
     proposal-database:
         image: mcr.microsoft.com/mssql/server:2019-latest
         environment:
-            SA_PASSWORD: "Pr0p0s@l!"
+            [changed_with_no_reason]: [changed_with_no_reason]
             ACCEPT_EULA: "Y"
         networks:
             - default-network
