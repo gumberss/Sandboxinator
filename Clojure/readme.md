@@ -20,4 +20,7 @@ In the diagram, (+ 3 4) is read as a list containing the symbol (+) and two numb
 - If you’d like to see a full listing of the functions in a particular namespace, you can use the dir function `(dir clojure.repl)`
 - To see not only the documentation but the underlying source for any function accessible by the runtime: `(source dir)`
 
+![image](https://user-images.githubusercontent.com/38296002/141655218-7e1577b7-debb-4dfa-9661-68cd1c1ecd1e.png)
+
+
 Source: https://clojure.org/guides/learn/syntax
