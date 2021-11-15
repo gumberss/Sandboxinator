@@ -87,3 +87,15 @@
 (p (merge-with + scores new-scores)) ; Sum batman values (1 + 2 = 3)
 (p (merge-with (fn [a b](* (+ a 1) (+ b 2))) scores new-scores))
 (p (merge-with #(* (+ %1 1) (+ %2 2)) scores new-scores))
+
+
+
+(->> numbs
+     (map #(* % %))
+     (take 2)
+     (reduce *)
+     (println)
+)
+
+(p (macroexpand '(->> "hello" (str " jmd")))) ; ->> Put "Hello" as last argument
+(p (macroexpand '(-> "hello" (str " jmd")))) ; -> Put "Hello" as first argument
