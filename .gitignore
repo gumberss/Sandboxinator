@@ -9,3 +9,16 @@ Javascript/Serverless/learning-serverless-aws/**/logs
 Devops/**/.terraform
 Devops/**/.terraform.lock.hcl
 Devops/**/terraform.tfstate
+
+Clojure/**/target
+Clojure/**/classes
+Clojure/**/checkouts
+Clojure/**/profiles.clj
+Clojure/**/pom.xml
+Clojure/**/pom.xml.asc
+Clojure/**/*.jar
+Clojure/**/*.class
+Clojure/**/.lein-*
+Clojure/**/.nrepl-port
+Clojure/**/.hgignore
+Clojure/**/.hg/
