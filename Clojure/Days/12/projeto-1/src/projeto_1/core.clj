@@ -1,12 +1,13 @@
 (ns projeto-1.core)
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
-
-(println (neg? (count [])))
-
+(defn taxa-de-entrega
+  "Calcula a taxa de entrega com base nas regras de negócio...."
+  [valor-da-compra]
+       (if (<= valor-da-compra 100)
+         15
+        (if (<= valor-da-compra 200)
+          5
+          0)))
 ; Intelij
 ; cmd shift + p - > executa a linha
 ; cmd shift + k -> coloca a aexpressão dentro dos parenteses
