@@ -87,7 +87,7 @@
 (pprint "q2")
 ((partial (partial my-if (> 10 1) #(pprint "aham"))) #(pprint "não"))
 
-(pprint "q3")
+(println "apply and partial")
 
 (defn my-if2 [cond ok err]
   (if cond
@@ -98,9 +98,6 @@
               (partial "aham")
               (partial "no"))))
 
-(println "apply")
-
-
 (println (apply + [1 2 3 4 5 6 7]))
 (println (apply map #(+ %1 %2) [[1 2 3] [3 2 1]]))
 (println (map (partial reduce +) [[1 2 3] [3 2 1]]))
@@ -110,18 +107,29 @@
 (println (reduce (partial map +) [[1 2 3] [3 2 1] [4 5 6]]))
 ; lines to columns
 (println (apply map #(into [] [%1 %2 %3]) [[1 2 3]
-                                  [4 5 6]
-                                  [7 8 9]]))
-;to vector (mapv)
-(println (apply mapv #(into [] [%1 %2 %3]) [[1 2 3]
                                            [4 5 6]
                                            [7 8 9]]))
+;to vector (mapv)
+(println (apply mapv #(into [] [%1 %2 %3]) [[1 2 3]
+                                            [4 5 6]
+                                            [7 8 9]]))
 ; invert list
 (println (into () '(1 2 3)))
 
-
+(println "Juxt and comp")
 (pprint ((juxt count (partial reduce +)) [1 2 3 4 5]))
 
 (pprint ((juxt count (partial apply +)) [1 2 3 4 5]))
 
+(pprint ((juxt
+           (comp
+             (partial reduce +)
+             (partial map #(+ % 1)))
+           (partial apply +)) [1 2 3 4 5]))
+
+(pprint (reduce + ((juxt
+                     (comp
+                       (partial apply +)
+                       (partial map #(+ % 1)))
+                     (partial apply +)) [1 2 3 4 5])))
 
