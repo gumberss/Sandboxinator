@@ -24,16 +24,16 @@
 (defn come-to [hospital person]
   (receive-person hospital :front-desk person))
 
-(defn next-to-answer [department hospital]
+(defn next-to-answer [hospital department]
   (peek (get hospital department)))
 
-(defn remove-next [hospital]
-  (update hospital :front-desk pop))
+(defn answer-from [hospital department]
+  (update hospital department pop))
 
 (defn forward [laboratory hospital]
-  (->> hospital
-       (next-to-answer :front-desk)
-       (update hospital laboratory conj)
-       (remove-next)))
+  (let [person (next-to-answer hospital :front-desk)]
+    (-> hospital
+        (answer-from :front-desk)
+        (update laboratory conj person))))
 
 

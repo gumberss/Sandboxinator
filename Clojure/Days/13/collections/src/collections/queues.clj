@@ -6,10 +6,10 @@
 (pprint c.queues-logic/hospital)
 
 (def hospital (c.queues-logic/come-to c.queues-logic/hospital 111))
-(def hospital (c.queues-logic/come-to hospital 111))
-(def hospital (c.queues-logic/come-to hospital 111))
-(def hospital (c.queues-logic/come-to hospital 111))
-(def hospital (c.queues-logic/come-to hospital 111))
+(def hospital (c.queues-logic/come-to hospital 222))
+(def hospital (c.queues-logic/come-to hospital 333))
+(def hospital (c.queues-logic/come-to hospital 444))
+(def hospital (c.queues-logic/come-to hospital 555))
 ;(def hospital (c.queues-logic/come-to hospital 111))
 
 (pprint hospital)
@@ -107,5 +107,21 @@
 (println (reduce + (map (partial reduce +) [[1 2 3] [3 2 1]])))
 (println (reduce concat [[1 2 3] [3 2 1]]))
 (println (reduce (partial map +) [[1 2 3] [3 2 1]]))
+(println (reduce (partial map +) [[1 2 3] [3 2 1] [4 5 6]]))
+; lines to columns
+(println (apply map #(into [] [%1 %2 %3]) [[1 2 3]
+                                  [4 5 6]
+                                  [7 8 9]]))
+;to vector (mapv)
+(println (apply mapv #(into [] [%1 %2 %3]) [[1 2 3]
+                                           [4 5 6]
+                                           [7 8 9]]))
+; invert list
+(println (into () '(1 2 3)))
+
+
+(pprint ((juxt count (partial reduce +)) [1 2 3 4 5]))
+
+(pprint ((juxt count (partial apply +)) [1 2 3 4 5]))
 
 
