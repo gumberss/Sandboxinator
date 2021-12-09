@@ -1,5 +1,6 @@
 (ns collections.core
-  (:require [collections.db :as c.db]))
+  (:require [collections.db :as c.db])
+  (:use [clojure pprint]))
 
 (defn p [& vals]
   (apply clojure.pprint/pprint vals))
