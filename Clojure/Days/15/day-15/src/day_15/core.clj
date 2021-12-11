@@ -54,6 +54,8 @@
 (something (Food. 100 false))
 (something (Food. 10000 false))
 
+; it's not necesary to use with classes/records
+(something {:price 10000})
 
 
 
