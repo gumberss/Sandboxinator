@@ -1,14 +1,17 @@
 (ns day-17-more-tests.core
   (:use clojure.pprint)
-  (:require [schema.core :as s]))
+  (:require [schema.core :as s])
+  (:gen-class))
+
+; to create the .jar https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md#uberjar
 
 (s/set-fn-validation! true)
 
-(def Cashier
-  {:id s/Keyword :queue [Person]})
-
 (def Person
   {:id s/Num :name s/Str})
+
+(def Cashier
+  {:id s/Keyword :queue [Person]})
 
 (s/def Store
   {:cashiers {:cashier1 Cashier
@@ -47,3 +50,6 @@
 
 (pprint (my-flow))
 
+(defn -main [& args]
+  (println "Welcome to my project! These are your args:" )
+  (pprint (my-flow)))
