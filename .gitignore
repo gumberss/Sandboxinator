@@ -23,6 +23,20 @@ Clojure/**/.nrepl-port
 Clojure/**/.hgignore
 Clojure/**/.hg/
 
+Dbs/**/target
+Dbs/**/classes
+Dbs/**/checkouts
+Dbs/**/profiles.clj
+Dbs/**/pom.xml
+Dbs/**/pom.xml.asc
+Dbs/**/*.jar
+Dbs/**/*.class
+Dbs/**/.lein-*
+Dbs/**/.nrepl-port
+Dbs/**/.hgignore
+Dbs/**/.hg/
+Dbs/**/.lein
+
 
 # Compiled class file
 *.class
