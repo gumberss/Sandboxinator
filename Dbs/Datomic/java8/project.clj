@@ -6,5 +6,5 @@
   :repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                    :creds :gpg}}
   :dependencies [[org.clojure/clojure "1.10.1"]
-                 [com.datomic/datomic-pro "0.9.5786"]]
+                 [com.datomic/datomic-pro "0.9.5951"]]
   :repl-options {:init-ns starting.core})

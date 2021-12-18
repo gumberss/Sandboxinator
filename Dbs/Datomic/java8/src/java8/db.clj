@@ -23,7 +23,20 @@
               :db/ident       :product/price
               :db/valueType   :db.type/bigdec
               :db/cardinality :db.cardinality/one
-              :db/doc         "Guess what, the product price :O"}])
+              :db/doc         "Guess what, the product price :O"}
+             {:db/ident       :product/keywords
+              :db/cardinality :db.cardinality/many
+              :db/valueType   :db.type/string}
+             {:db/ident       :product/id
+              :db/valueType   :db.type/uuid
+              :db/cardinality :db.cardinality/one
+              :db/unique      :db.unique/identity           ; If you use the same id in two entities, the second one will overwrite the first one
+              }])
 
 (defn create-schema [conn]
   (d/transact conn schema))
+
+(defn pull-entities [db]
+  (d/q '[:find (pull ?e [*])
+         :where [?e :product/name]] db))
+
