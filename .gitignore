@@ -37,6 +37,7 @@ Dbs/**/.hgignore
 Dbs/**/.hg/
 Dbs/**/.lein
 
+.idea
 
 # Compiled class file
 *.class
