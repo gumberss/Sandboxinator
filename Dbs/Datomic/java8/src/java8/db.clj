@@ -31,7 +31,18 @@
               :db/valueType   :db.type/uuid
               :db/cardinality :db.cardinality/one
               :db/unique      :db.unique/identity           ; If you use the same id in two entities, the second one will overwrite the first one
-              }])
+              }
+             {:db/ident :product/category
+              :db/cardinality :db.cardinality/one
+              :db/valueType :db.type/ref                    ; Reference to other entity
+              }
+             {:db/ident       :category/name
+              :db/valueType   :db.type/string
+              :db/cardinality :db.cardinality/one}
+             {:db/ident       :category/id
+              :db/valueType   :db.type/uuid
+              :db/cardinality :db.cardinality/one
+              :db/unique :db.unique/identity}])
 
 (defn create-schema [conn]
   (d/transact conn schema))
@@ -40,3 +51,7 @@
   (d/q '[:find (pull ?e [*])
          :where [?e :product/name]] db))
 
+(defn pull-catetegories [db]
+  (d/q '[:find (pull ?e [*])
+         :where [?e :category/id]]
+       db))
