@@ -8,22 +8,8 @@
 
 (db/create-schema conn)
 
-(let [c1 (model/new-category "Eletronic")
-      c2 (model/new-category "Something")]
-   (pprint @(d/transact conn [c1 c2]))
-          )
 
-(pprint (let [computer (model/new-product (model/uuid) "Cool Computer" "Its so nice and amazing" 1.33M)
-              toy (model/new-product (model/uuid) "Cool toy" "Its so nice and amazing" 123.33M)]
-          @(d/transact conn [computer toy])
-          ))
-
-(pprint (let [keyboard (model/new-product (model/uuid) "Cool keyboard" "Its so nice and amazing" 3.33M)
-              mouse (model/new-product (model/uuid) "Cool mouse" "Its so nice and amazing" 2.33M)]
-          @(d/transact conn [ keyboard mouse])
-          ))
-
-(pprint (db/pull-catetegories (d/db conn)))
+(pprint (db/pull-categories (d/db conn)))
 (pprint (db/pull-entities (d/db conn)))
 
 (pprint
