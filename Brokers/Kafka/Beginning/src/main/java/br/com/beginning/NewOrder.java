@@ -1,6 +1,7 @@
 package br.com.beginning;
 
 
+import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -15,13 +16,17 @@ public class NewOrder {
         var producer = new KafkaProducer<String, String>(properties());
         var value = "1,hello,happy";
         var record = new ProducerRecord("STORE_NEW_ORDER", value, value);
-        producer.send(record, (data, ex) -> {
-            if(ex != null){
+        Callback callback = (data, ex) -> {
+            if (ex != null) {
                 ex.printStackTrace();
                 return;
             }
             System.out.println(data.topic() + " " + data.partition() + " " + data.offset());
-        }).get();
+        };
+        producer.send(record, callback).get();
+
+        var record2 = new ProducerRecord("STORE_NEW_EMAIL", "Email", "Email");
+        producer.send(record2, callback).get();
     }
 
     private static Properties properties() {
