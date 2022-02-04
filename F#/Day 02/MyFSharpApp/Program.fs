@@ -3,9 +3,26 @@
 open System
 open Learning
 
+
+
+type Friend = {
+    name : string
+    likeFSharp: bool
+}
+let friendNames = ["seminino"; "Renanzinho"; "Pirinho"]
+
+let mutable myFriends = 
+    List.map (fun x -> {name = x;  likeFSharp = false}) friendNames
+
+let findOtherFriends (peoples : Friend list) =
+    myFriends <- (List.filter (fun x -> x.likeFSharp) peoples)
+    
+//(findOtherFriends )
+
+
 type String50 = String50 of string
 
-let createString50 (s : string)= 
+let createString50 (s : string) = 
     if s.Length <= 50
     then Some (String50 s)
     else None
