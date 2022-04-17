@@ -37,4 +37,8 @@ public class TestController : ControllerBase
     [HttpGet("authenticated/manager")]
     [Authorize(Roles = "Manager")]
     public string AuthManager() => $"Auth Manager- {User.Identity.Name}";
+
+    [HttpGet("authenticated/jarbas")]
+    [Authorize("JarbasPolicy")]
+    public string Jarbas() => $"Jarbas Policy - {User.Identity.Name}";
 }
