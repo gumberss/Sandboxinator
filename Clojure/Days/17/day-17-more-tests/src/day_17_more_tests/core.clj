@@ -7,6 +7,11 @@
 
 (s/set-fn-validation! true)
 
+
+(s/defn :- s/Bool
+  [a :- s/Bool]
+  a)
+
 (def Person
   {:id s/Num :name s/Str})
 
