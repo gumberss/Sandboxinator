@@ -1,19 +1,5 @@
 ﻿open System
 
-let changeLetter (action: char -> char) (word : string) =
-    match (Seq.toList word) with  
-    | head :: tail -> String(List.toArray(action(head) :: tail))
-    | _ -> word
-
-let toCamelCase (text : string) =
-    text.Split[|'_'; '-'|]
-    |> Array.map (changeLetter Char.ToUpper)
-    |> String.Concat
-    |> changeLetter (fun _ -> text[0])
-
-
-Console.WriteLine (toCamelCase "the-stealth-warrior")
-exit 1
 
 type Breather = {
     description : string
