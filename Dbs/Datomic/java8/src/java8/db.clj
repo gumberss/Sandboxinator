@@ -39,6 +39,10 @@
               :db/cardinality :db.cardinality/one
               :db/valueType   :db.type/ref                  ; Reference to other entity
               }
+             {:db/ident       :product/digital
+              :db/cardinality :db.cardinality/one
+              :db/valueType   :db.type/boolean              ; Reference to other entity
+              }
              ; stock
              {:db/ident       :product/stock
               :db/valueType   :db.type/long
@@ -86,18 +90,21 @@
                       [:category/id category-id]]]))
 
 
+
 (defn create-example-data [conn]
   (let [c1 (model/new-category "Eletronic")
         c2 (model/new-category "Something")
-        computer (model/new-product (model/uuid) "Cool Computer" "Its so nice and amazing" 1.33M 10)
-        toy (model/new-product (model/uuid) "Cool toy" "Its so nice and amazing" 123.33M)
-        keyboard (model/new-product (model/uuid) "Cool keyboard" "Its so nice and amazing" 3.33M 12)
-        mouse (model/new-product (model/uuid) "Cool mouse" "Its so nice and amazing" 2.33M)]
+        computer (model/new-product (model/uuid) "C ool Computer" "Its so nice and amazing" 1.33M false 10)
+        toy (model/new-product (model/uuid) "Cool toy" "Its so nice and amazing" 123.33M false)
+        keyboard (model/new-product (model/uuid) "Cool keyboard" "Its so nice and amazing" 3.33M false 12)
+        mouse (model/new-product (model/uuid) "Cool mouse" "Its so nice and amazing" 2.33M false)
+        online-game (model/new-product (model/uuid) "Cool game" "Its so nice and amazing" 288.33M true)]
     (add-categories! conn c1 c2)
-    (create-product! conn computer toy keyboard mouse)
+    (create-product! conn computer toy keyboard mouse online-game)
     (println "Binding1")
     (bind-category! conn (:product/id computer) (:category/id c1))
     (bind-category! conn (:product/id toy) (:category/id c2))
+    (bind-category! conn (:product/id online-game) (:category/id c2))
     (println "Binding")
     (bind-category! conn (:product/id keyboard) (:category/id c1))
     ))
@@ -131,21 +138,55 @@
                           :where [?e :category/id]]
                         db)))
 
-(s/defn products-with-stock
+(def rules
+  '[
+    [(stock ?e ?stock)
+     [?e :product/stock ?stock]]
+    [(stock ?e ?stock)
+     [?e :product/digital true]
+     [(ground 100) ?stock]]
+    [(can-sell? ?e)
+     [stock ?e ?stock]
+     [(> ?stock 0)]]
+    [(product-in-category ?entity ?category-name)
+     [?category :category/name ?category-name]
+     [?entity :product/category ?category]]])
+
+(s/defn products-with-salable
   [db]
   (d/q
     '[:find [(pull ?e [*]) ...]
+      :in $ %
       :where
-      [?e :product/id]
-      [?e :product/stock ?stock]
-      [(> ?stock 0)]] db))
+      [stock ?e ?stock]
+      [can-sell? ?e]] db rules))
 
-(s/defn find-product-with-stock
+(s/defn find-product-with-salable
   [db product-id]
   (let [product (datomic->entity (d/q '[:find (pull ?e [* {:product/category [*]}]) .
-                                        :in $ ?product-id
+                                        :in $ % ?product-id
                                         :where [?e :product/id ?product-id]
-                                        [?e :product/stock ?stock]
-                                        [(> ?stock 0)]
-                                        ] db product-id))]
+                                        [can-sell? ?e]] db rules product-id))]
     (if (:product/id product) product nil)))
+
+(s/defn products-by-category :- [model/Product]
+  [db, categories :- [s/Str]]
+  (datomic->entity
+    (d/q '[:find [(pull ?entity [* {:product/category [*]}]) ...]
+           :in $ [?category-name ...]
+           :where
+           (product-in-category ?entity ?category-name)]
+         db categories)))
+
+(s/defn products-by-category-and-digital :- [model/Product]
+  [db, categories :- [s/Str] digital? :- s/Bool]
+  (datomic->entity
+    (d/q '[:find [(pull ?entity [* {:product/category [*]}]) ...]
+           :in $ % [?category-name ...] ?digital?
+           :where
+           (product-in-category ?entity ?category-name)
+           [?entity :product/digital ?digital?]]
+         db rules categories digital?)))
+
+(s/defn update-price [conn product-id :- java.util.UUID old-price :- BigDecimal new-price :- BigDecimal ]
+  )
