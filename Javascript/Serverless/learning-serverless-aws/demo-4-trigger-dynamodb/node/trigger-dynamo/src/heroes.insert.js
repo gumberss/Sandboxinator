@@ -1,5 +1,5 @@
 const uuid = require('uuid')
-const Joi = require('@hapi/joi')
+const Joi = require('joi')
 
 class Handler {
 	constructor({ dynamoDbSvc }) {
@@ -9,7 +9,7 @@ class Handler {
 
 	static validator(){
 		return Joi.object({
-			nome: join.string().max(100).min(2).required(),
+			nome: Joi.string().max(100).min(2).required(),
 			poder: Joi.string().max(20).required()
 		})
 	}

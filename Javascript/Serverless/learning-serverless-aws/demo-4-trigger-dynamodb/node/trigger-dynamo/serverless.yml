@@ -1,8 +1,13 @@
 service: trigger-dynamo
+variablesResolutionMode: 20210326
 
 provider:
   name: aws
   runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+  region: us-east-1
+  httpApi:
+    cors: true
   environment:
     DYNAMODB_TABLE: Heroes
   iamRoleStatements:
@@ -40,4 +45,3 @@ functions:
       - http:
           path: heroes
           method: post
-          cors: true
