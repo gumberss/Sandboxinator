@@ -2,6 +2,8 @@ C#/.vs
 C#/**/.vs
 C#/**/bin
 C#/**/obj
+F#/**/bin
+F#/**/obj
 Elixir/**/.elixir_ls
 Elixir/**/*.secret.exs
 **/node_modules
