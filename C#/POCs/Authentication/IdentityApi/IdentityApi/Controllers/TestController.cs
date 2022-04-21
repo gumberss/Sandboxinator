@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using IdentityApi.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityApi.Controllers
@@ -21,12 +22,18 @@ namespace IdentityApi.Controllers
         [HttpGet("User")]
         public async Task<IActionResult> Get([FromQuery] string username, string password)
         {
-            var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
+            //var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
 
-            if (result.Succeeded)
+            var user = await _userManager.FindByNameAsync(username);
+
+            if (user is not null)
             {
-                // generate token
-                return Ok(true);
+                var validPassword = await _userManager.CheckPasswordAsync(user, password);
+                if (validPassword)
+                {
+                    var token = TokenService.GenerateToken(user);
+                    return Ok(token);
+                }
             }
 
             return Ok(false);

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityApi", "IdentityApi\IdentityApi.csproj", "{DF8A5A4B-14D8-4D01-BD62-148144F4A753}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityApi", "IdentityApi\IdentityApi.csproj", "{DF8A5A4B-14D8-4D01-BD62-148144F4A753}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtherApi", "OtherApi\OtherApi.csproj", "{E66F81FE-3246-41A1-8A91-51729FE4F61F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DF8A5A4B-14D8-4D01-BD62-148144F4A753}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF8A5A4B-14D8-4D01-BD62-148144F4A753}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF8A5A4B-14D8-4D01-BD62-148144F4A753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E66F81FE-3246-41A1-8A91-51729FE4F61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E66F81FE-3246-41A1-8A91-51729FE4F61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E66F81FE-3246-41A1-8A91-51729FE4F61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E66F81FE-3246-41A1-8A91-51729FE4F61F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
