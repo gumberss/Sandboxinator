@@ -11,6 +11,7 @@
                      service]
   component/Lifecycle
   (start [this]
+    (println this)
     (if service
       this
       (cond-> service-map

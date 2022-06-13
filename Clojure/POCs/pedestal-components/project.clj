@@ -9,5 +9,6 @@
                  [io.pedestal/pedestal.route "0.5.10"]
                  [io.pedestal/pedestal.jetty "0.5.10"]
                  [org.slf4j/slf4j-simple "1.7.36"]
-                 [com.stuartsierra/component.repl "1.0.0"]]
+                 [com.stuartsierra/component.repl "1.0.0"]
+                 [prismatic/schema "1.3.0"]]
   :repl-options {:init-ns pedestal-components.core})
