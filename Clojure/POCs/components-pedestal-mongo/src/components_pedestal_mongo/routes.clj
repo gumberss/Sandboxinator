@@ -53,4 +53,4 @@
 (defn routes []
   #{["/name" :post [names] :route-name :name]
     ["/name" :get [get-name] :route-name :get-name]
-    ["/name" :put [(body-params/body-params) put-name] :route-name :put-name]})
+    ["/name" :put [put-name] :route-name :put-name]})

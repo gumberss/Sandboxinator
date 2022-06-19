@@ -2,7 +2,11 @@
   (:require [com.stuartsierra.component :as component]
             [io.pedestal.http :as http]
             [components-pedestal-mongo.routes :as routes]
-            [clojure.pprint :as p]))
+            [clojure.pprint :as p]
+            [io.pedestal.http.body-params :as body-params]))
+
+(def all-routes
+  (set (concat (routes/routes))))
 
 (defn test?
   [service-map]
@@ -15,23 +19,26 @@
   {:name  :component-injector
    :enter (partial assoc-component component)})
 
-(defn add-component-interceptor
-  [endpoint component]
-  (update-in endpoint [2] #(into [(inject-component component)] %)))
+(defn interceptors [components]
+  [(body-params/body-params)
+   (inject-component components)])
 
-(defn add-component-to-interceptors
+(defn include-interceptors
+  [endpoint component]
+  (update-in endpoint [2] #(into (interceptors component) %)))
+
+(defn add-interceptors
   [endpoints component]
-  (set (map #(add-component-interceptor % component) endpoints)))
+  (set (map #(include-interceptors % component) endpoints)))
 
 (defrecord Pedestal [service-map
                      service]
   component/Lifecycle
   (start [this]
-    (println (add-component-to-interceptors (routes/routes) this))
     (if service
       this
       (cond-> service-map
-              true (assoc ::http/routes  (add-component-to-interceptors (routes/routes) this))
+              true (assoc ::http/routes  (add-interceptors all-routes this))
               true                      http/create-server
               (not (test? service-map)) http/start
               true                      ((partial assoc this :service)))))
