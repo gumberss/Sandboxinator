@@ -7,15 +7,8 @@
             [monger.result :as r])
   (:import (org.bson.types ObjectId)))
 
-(defn assoc-component [component context]
-  (update context :request assoc :component component))
-
-(defn inject-component [component]
-  {:name  :component-injector
-   :enter (partial assoc-component component)})
-
 (defn names
-  [{{ {:keys [db]} :mongo}         :component
+  [{{{:keys [db]} :mongo}   :component
     {:keys [name lat long]} :params}]
   (try
     (let [lat (Double/parseDouble lat)
@@ -45,7 +38,7 @@
 
 (defn get-name
   [{{{:keys [db]} :mongo} :component
-    {:keys [lat long]}            :params}]
+    {:keys [lat long]}    :params}]
   (let [lat (Double/parseDouble lat)
         long (Double/parseDouble long)
         name (try
@@ -57,7 +50,7 @@
     {:status 200
      :body   name}))
 
-(defn routes [component]
-  #{["/name" :post [(inject-component component) names] :route-name :name]
-    ["/name" :get [(inject-component component) get-name] :route-name :get-name]
-    ["/name" :put [(inject-component component) (body-params/body-params) put-name] :route-name :put-name]})
+(defn routes []
+  #{["/name" :post [names] :route-name :name]
+    ["/name" :get [get-name] :route-name :get-name]
+    ["/name" :put [(body-params/body-params) put-name] :route-name :put-name]})
