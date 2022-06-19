@@ -3,6 +3,7 @@
             [io.pedestal.http.body-params :as body-params]
             [monger.collection :as mc]
             [monger.core :as mg]
+            [monger.operators :refer :all]
             [monger.result :as r])
   (:import (org.bson.types ObjectId)))
 
@@ -14,15 +15,16 @@
    :enter (partial assoc-component component)})
 
 (defn names
-  [{{:keys [mongo]} :component
-    {:keys [name]}  :params}]
+  [{{ {:keys [db]} :mongo}         :component
+    {:keys [name lat long]} :params}]
   (try
-    (let [conn (:connection mongo)
-          db (mg/get-db conn "mongo-test")]
+    (let [lat (Double/parseDouble lat)
+          long (Double/parseDouble long)]
       {:status 200
-       :body   (mc/insert-and-return db "people" {:_id  (ObjectId.)
-                                                  :name name
-                                                  :id   (random-uuid)})})
+       :body   (mc/insert-and-return db "people" {:_id     (ObjectId.)
+                                                  :name    name
+                                                  :latlong {:type "Point" :coordinates [lat long]}
+                                                  :id      (random-uuid)})})
     (catch Exception e
       (println e))))
 
@@ -42,10 +44,14 @@
       (println e))))
 
 (defn get-name
-  [{{{:keys [connection]} :mongo} :component}]
-  (let [db (mg/get-db connection "mongo-test")
+  [{{{:keys [db]} :mongo} :component
+    {:keys [lat long]}            :params}]
+  (let [lat (Double/parseDouble lat)
+        long (Double/parseDouble long)
         name (try
-               (mc/find-maps db "people")
+               (mc/find-maps db "people" {:latlong {$near {"$geometry"    {:type        "Point"
+                                                                           :coordinates [lat long]}
+                                                           "$maxDistance" 100}}})
                (catch Exception e
                  (println e)))]
     {:status 200
