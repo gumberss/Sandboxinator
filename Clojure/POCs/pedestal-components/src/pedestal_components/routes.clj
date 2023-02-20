@@ -15,15 +15,6 @@
   {:name  :component-injector
    :enter (partial assoc-component component)})
 
-(defn catch-errors*
-  [context error]
-  (println error)
-  context)
-(defn catch-errors []
-  {:name  :catch-errors
-   :leave catch-errors*
-   })
-
 (defn test
   [{{{po :po} :lala} :component
     params           :params}]
@@ -45,7 +36,6 @@
   [{{:keys [datomic]} :component
     {name :name
      id   :id}        :json-params}]
-
   (try
     {:status 200
      :body   @(d/transact datomic [{:person/name name

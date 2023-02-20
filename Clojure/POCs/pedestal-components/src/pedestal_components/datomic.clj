@@ -3,7 +3,7 @@
             [datomic.api :as d]))
 
 (def db-uri "datomic:free://localhost:4334/datomic-component?password=datomic")
-(d/create-database db-uri)
+#_(d/create-database db-uri)
 
 (def schema [{:db/ident :person/id
               :db/valueType :db.type/uuid
