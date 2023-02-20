@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  pedestal_mongo:
+    container_name: pedestal_mongo
+    restart: always
+    build: "../"
+    ports:
+      - "3002:3002"
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - '27018:27017'
