@@ -71,6 +71,31 @@ def record_activity_cost(city: str, activity_name: str, price_summary: str) -> s
 
 
 @mcp.tool()
+def get_costs_resource() -> dict:
+	"""
+	Provides stored activity costs as a resource-like payload.
+	"""
+	records = []
+	if COSTS_FILE.exists():
+		with COSTS_FILE.open("r", encoding="utf-8") as file_handle:
+			for line in file_handle:
+				line = line.strip()
+				if not line:
+					continue
+				try:
+					records.append(json.loads(line))
+				except json.JSONDecodeError:
+					continue
+
+	return {
+		"resource_type": "costs",
+		"count": len(records),
+		"items": records,
+		"source_file": str(COSTS_FILE),
+	}
+
+
+@mcp.tool()
 def plan_trip_workflow(city: str) -> str:
 	"""
 	Orchestration tool that tells the client exactly how to run the travel workflow,
@@ -107,6 +132,36 @@ Important:
 - Create exactly one cost record per activity.
 - If task creation fails for one activity, continue with the rest and report failures.
 - If cost recording fails for one activity, continue with the rest and report failures.
+""".strip()
+
+
+@mcp.tool()
+def get_trip_summary(city: str) -> str:
+	"""
+	Trip summary workflow tool that tells the client how to retrieve and format
+	the trip summary with activities and costs.
+	"""
+	return f"""
+Follow this workflow to generate a trip summary for "{city}":
+
+1. Call this server tool `get_costs_resource` (no arguments) to retrieve all recorded activities and costs.
+
+2. From the result, filter for activities where city == "{city}".
+
+3. For each filtered activity, extract:
+	- activity_name
+	- price_summary
+
+4. For each activity, format as: "<activity_name>. Cost: <price_summary>"
+	- If price_summary is empty or "free", use "free" as the cost value
+
+5. Join all formatted activities with "; " (semicolon and space).
+
+6. Return the final summary in this format:
+	Trip to {city}. Activities: <formatted activities>
+
+Example output:
+	Trip to Paris. Activities: Eiffel Tower. Cost: $20-30 USD; Louvre Museum. Cost: $15-20 USD; Seine River Cruise. Cost: free
 """.strip()
 
 

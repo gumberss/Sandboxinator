@@ -61,6 +61,21 @@ def list_tasks() -> List[str]:
         print(f"Error reading tasks file: {e}")
         return []
 
+
+@mcp.tool()
+def get_tasks_resource() -> dict:
+    """
+    Provides task data as a resource-like payload for downstream consumers.
+    """
+    tasks = list_tasks()
+    return {
+        "resource_type": "tasks",
+        "count": len(tasks),
+        "items": tasks,
+        "source_file": TASKS_FILE,
+    }
+
+
 if __name__ == "__main__":
     print("Starting MCP Task Server...")
     # The server will run and listen for requests from the client over stdio
