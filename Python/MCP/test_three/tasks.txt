@@ -1,0 +1,5 @@
+[UK] Visit the British Museum
+[UK] Take a ride on the London Eye
+[UK] Explore the Tower of London
+[UK] Visit Buckingham Palace
+[UK] Stroll through Hyde Park
